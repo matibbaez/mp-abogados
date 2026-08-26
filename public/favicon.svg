@@ -1,0 +1,20 @@
+<svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="mp-grad-nav" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1e3a8a" />
+            <stop offset="100%" stop-color="#0f172a" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Bloque Izquierdo Blanco -->
+    <rect x="0" y="0" width="60" height="100" fill="#ffffff"/>
+    
+    <!-- Bloque Derecho Azul Institucional -->
+    <rect x="60" y="0" width="60" height="100" fill="url(#mp-grad-nav)"/>
+    
+    <!-- Isotipo M (Vector) -->
+    <polyline points="16,70 16,32 30,48 44,32 44,70" fill="none" stroke="#0f172a" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+    
+    <!-- Isotipo P (Vector) -->
+    <path d="M 78 70 L 78 32 L 88 32 A 12 12 0 0 1 88 56 L 78 56" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

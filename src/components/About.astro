@@ -1,0 +1,132 @@
+---
+---
+<section id="estudio" class="py-24 md:py-40 px-6 lg:px-8 bg-slate-950 text-white relative overflow-hidden flex items-center">
+    
+    <!-- Imagen de fondo cinematográfica -->
+    <div class="absolute inset-0 z-0">
+        <img 
+            src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=2000&auto=format&fit=crop" 
+            alt="Arquitectura Legal" 
+            class="w-full h-full object-cover opacity-20 lg:opacity-10 grayscale mix-blend-luminosity animate-slow-zoom"
+        />
+        <!-- Gradiente optimizado: Vertical en mobile (revela arriba), Horizontal en desktop (revela a la derecha) -->
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/95 to-slate-950/40 lg:bg-gradient-to-r lg:from-slate-950 lg:via-slate-950/90 lg:to-transparent"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            <!-- Columna de Texto Principal -->
+            <div class="lg:col-span-7 flex flex-col items-start reveal-about">
+                <div class="inline-flex items-center space-x-3 mb-8 md:mb-12">
+                    <span class="w-8 h-[1px] bg-slate-500"></span>
+                    <span class="text-[10px] md:text-xs font-bold tracking-[0.3em] text-slate-400 uppercase">Filosofía de la Firma</span>
+                </div>
+                
+                <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-10 font-serif leading-[1.05] tracking-tighter">
+                    No negociamos <br/>
+                    <span class="text-slate-400 font-light italic">con su futuro.</span>
+                </h2>
+                
+                <div class="space-y-6 max-w-xl">
+                    <p class="text-sm md:text-lg text-slate-300 font-light leading-relaxed">
+                        El sistema de seguros está diseñado para minimizar su compensación mediante tácticas de desgaste. Conocemos sus mecanismos internos y los neutralizamos con rigor técnico, evidencia irrefutable y litigio estratégico.
+                    </p>
+                    <p class="text-sm md:text-lg text-slate-400 font-light leading-relaxed">
+                        Detrás de cada expediente hay una persona buscando justicia tras un evento traumático. Asumimos la carga legal absoluta para que usted pueda enfocarse en lo único que importa: su recuperación.
+                    </p>
+                </div>
+
+                <!-- Sello de Autoridad / Firma -->
+                <div class="pt-8 md:pt-12 mt-8 md:mt-12 border-t border-slate-800/50 w-full max-w-md">
+                    <div class="font-serif text-3xl md:text-4xl text-white font-bold tracking-widest mb-1 md:mb-2">
+                        MP
+                    </div>
+                    <div class="text-[9px] md:text-[10px] tracking-[0.3em] text-slate-500 uppercase font-bold">
+                        Dirección General Estratégica
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna de Cifras - Diseño Adaptativo -->
+            <div class="lg:col-span-5 relative mt-6 lg:mt-0 reveal-about" style="transition-delay: 200ms;">
+                
+                <!-- Línea decorativa vertical (solo visible en desktop) -->
+                <div class="hidden lg:block absolute -left-8 top-10 bottom-10 w-[1px] bg-gradient-to-b from-transparent via-slate-700 to-transparent"></div>
+
+                <!-- Grid Horizontal en Mobile / Flex vertical en Desktop -->
+                <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:flex lg:flex-col lg:gap-20 pl-0 lg:pl-12">
+                    
+                    <!-- Métrica 1 -->
+                    <div class="relative group bg-slate-900/60 lg:bg-transparent border border-slate-800 lg:border-transparent p-5 lg:p-0 rounded-sm backdrop-blur-sm lg:backdrop-blur-none transition-colors duration-500 hover:bg-slate-800/80 lg:hover:bg-transparent">
+                        <div class="text-3xl sm:text-5xl md:text-8xl lg:text-9xl font-bold text-white lg:text-transparent desktop-text-stroke mb-2 font-serif tracking-tighter group-hover:text-white transition-colors duration-700">
+                            +5k
+                        </div>
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4">
+                            <span class="hidden lg:block w-8 h-[1px] bg-slate-600 group-hover:w-12 group-hover:bg-white transition-all duration-500"></span>
+                            <span class="text-[9px] md:text-sm text-slate-400 uppercase tracking-[0.2em] font-bold group-hover:text-slate-200 transition-colors duration-500 leading-tight">
+                                Casos de <br class="lg:hidden"/>Tránsito
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Métrica 2 -->
+                    <div class="relative group bg-slate-900/60 lg:bg-transparent border border-slate-800 lg:border-transparent p-5 lg:p-0 rounded-sm backdrop-blur-sm lg:backdrop-blur-none transition-colors duration-500 hover:bg-slate-800/80 lg:hover:bg-transparent">
+                        <div class="text-3xl sm:text-5xl md:text-8xl lg:text-9xl font-bold text-white lg:text-transparent desktop-text-stroke mb-2 font-serif tracking-tighter group-hover:text-white transition-colors duration-700">
+                            24/7
+                        </div>
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4">
+                            <span class="hidden lg:block w-8 h-[1px] bg-slate-600 group-hover:w-12 group-hover:bg-white transition-all duration-500"></span>
+                            <span class="text-[9px] md:text-sm text-slate-400 uppercase tracking-[0.2em] font-bold group-hover:text-slate-200 transition-colors duration-500 leading-tight">
+                                Intervención <br class="lg:hidden"/>Urgente
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<style>
+    /* El efecto hueco se aplica SOLO en pantallas de escritorio */
+    @media (min-width: 1024px) {
+        .desktop-text-stroke {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+        }
+    }
+    
+    .reveal-about {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-about.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const elementsToReveal = document.querySelectorAll('.reveal-about');
+        elementsToReveal.forEach(el => observer.observe(el));
+    });
+</script>

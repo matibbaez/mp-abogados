@@ -1,0 +1,51 @@
+---
+---
+<section class="relative h-[100dvh] min-h-[550px] md:min-h-[700px] flex flex-col justify-end pb-10 md:pb-24 px-6 lg:px-8 overflow-hidden bg-slate-950">
+    
+    <!-- Fondo Cinematográfico -->
+    <div class="absolute inset-0 z-0">
+        <img 
+            src="https://images.unsplash.com/photo-1515569067071-ec3b51335dd0?q=80&w=2000&auto=format&fit=crop" 
+            alt="Fondo abstracto urbano" 
+            class="w-full h-full object-cover opacity-20 grayscale-[80%] mix-blend-luminosity animate-slow-zoom"
+        />
+        <!-- Gradiente dramático para resaltar el texto -->
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-900/30"></div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-start">
+        
+        <!-- Categoría sutil -->
+        <div class="animate-fade-in-up opacity-0 [animation-delay:200ms] border-l-2 border-white pl-4 mb-8 md:mb-16">
+            <p class="text-white tracking-[0.3em] uppercase text-[10px] md:text-xs font-bold mb-1">Firma Legal Boutique</p>
+            <p class="text-slate-400 tracking-[0.2em] uppercase text-[9px] md:text-[10px]">Siniestros Viales & Seguros</p>
+        </div>
+
+        <!-- Titular Colosal (Escalado para mobile) -->
+        <h1 class="animate-fade-in-up opacity-0 [animation-delay:400ms] text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-serif text-white leading-[1.1] md:leading-[1.1] tracking-tighter mb-8 md:mb-12">
+            Imponemos <br/>
+            <span class="text-slate-500 italic font-light">la ley.</span>
+        </h1>
+
+        <!-- Panel Inferior: Información y CTA Integrados -->
+        <div class="animate-fade-in-up opacity-0 [animation-delay:600ms] flex flex-col lg:flex-row justify-between items-start lg:items-end w-full border-t border-slate-800 pt-6 md:pt-8 gap-6 md:gap-8">
+            
+            <p class="text-slate-300 max-w-lg font-light text-sm md:text-lg leading-relaxed">
+                Rechazamos las ofertas estándar de las aseguradoras. Construimos estrategias de litigio contundentes para asegurar la compensación máxima tras un accidente de tránsito.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-3 md:gap-4 w-full lg:w-auto shrink-0">
+                <a href="#contacto" class="group relative flex justify-center items-center bg-white text-slate-950 px-6 py-4 md:px-10 md:py-5 overflow-hidden rounded-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]">
+                    <span class="relative z-10 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">Acción Inmediata</span>
+                    <div class="absolute inset-0 bg-slate-200 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
+                </a>
+                
+                <a href="#servicios" class="group flex justify-center items-center border border-slate-700 bg-transparent text-white px-6 py-4 md:px-10 md:py-5 rounded-sm hover:bg-slate-900 transition-colors duration-300">
+                    <span class="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] group-hover:text-slate-300 transition-colors">La Firma</span>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</section>

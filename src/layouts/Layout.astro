@@ -1,0 +1,94 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import '../styles/global.css';
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<!-- 1. ELIMINAMOS "scroll-smooth" DE AQUÍ -->
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="MP Abogados - Asesoría Legal de Alta Gama." />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+        <ViewTransitions />
+    </head>
+    <body class="bg-slate-950 text-slate-100 antialiased selection:bg-slate-800 selection:text-white pt-0">
+        
+        <Navbar />
+        <slot />
+        <Footer />
+        <WhatsAppFloat />
+
+        <!-- 2. CSS Obligatorio para que Lenis no se rompa -->
+        <style is:global>
+            html.lenis, html.lenis body {
+                height: auto;
+            }
+            .lenis.lenis-smooth {
+                scroll-behavior: auto !important;
+            }
+            .lenis.lenis-smooth [data-lenis-prevent] {
+                overscroll-behavior: contain;
+            }
+            .lenis.lenis-stopped {
+                overflow: hidden;
+            }
+            .lenis.lenis-smooth iframe {
+                pointer-events: none;
+            }
+        </style>
+
+        <!-- 3. Script de Lenis adaptado para ViewTransitions -->
+        <script>
+            import Lenis from 'lenis';
+
+            let lenis: Lenis | null = null;
+
+            function initLenis() {
+                // Si ya existe una instancia, la destruimos para no duplicar
+                if (lenis) lenis.destroy();
+
+                lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    orientation: 'vertical',
+                    gestureOrientation: 'vertical',
+                    smoothWheel: true,
+                    wheelMultiplier: 1,
+                    touchMultiplier: 2,
+                });
+
+                function raf(time: number) {
+                    if (lenis) {
+                        lenis.raf(time);
+                    }
+                    requestAnimationFrame(raf);
+                }
+
+                requestAnimationFrame(raf);
+            }
+
+            // Inicializar cuando la página carga
+            document.addEventListener('astro:page-load', initLenis);
+
+            // Destruir justo antes de cambiar de página para evitar cuelgues
+            document.addEventListener('astro:before-swap', () => {
+                if (lenis) {
+                    lenis.destroy();
+                    lenis = null;
+                }
+            });
+        </script>
+    </body>
+</html>

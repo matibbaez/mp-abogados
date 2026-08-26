@@ -1,0 +1,152 @@
+---
+const cases = [
+  {
+    amount: "Acuerdo Total",
+    title: "Siniestro Múltiple en Autopista",
+    description: "La aseguradora intentó catalogarlo como culpa concurrente. Mediante peritaje accidentológico propio, demostramos la responsabilidad objetiva del tercero, logrando la indemnización total por incapacidad sobreviniente y daño moral.",
+    year: "2023"
+  },
+  {
+    amount: "Cobertura 100%",
+    title: "Destrucción Total vs. Valor Venal",
+    description: "Rechazamos la liquidación inicial que no cubría el valor real del vehículo en el mercado. Forzamos la actualización del capital más intereses punitorios por privación de uso comercial.",
+    year: "2024"
+  },
+  {
+    amount: "Fallo Inédito",
+    title: "Motociclista Vulnerado",
+    description: "Revocamos la presunción de culpabilidad impuesta al conductor de la motocicleta. Se logró el resarcimiento integral de gastos médicos futuros, lucro cesante y daño estético mediante litigio estratégico.",
+    year: "2024"
+  }
+];
+---
+<section id="resultados" class="py-24 md:py-32 px-6 lg:px-8 bg-slate-950 text-white border-t border-slate-900">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Cabecera de la Sección -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8 reveal-results">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center space-x-3 mb-6">
+                    <span class="w-8 h-[1px] bg-slate-600"></span>
+                    <span class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-slate-400">Track Record</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-serif leading-[1.05] tracking-tighter">
+                    Resultados que <br/>
+                    <span class="text-slate-400 italic font-light">hablan por sí solos.</span>
+                </h2>
+            </div>
+        </div>
+
+        <!-- Acordeón Interactivo Editorial -->
+        <div class="border-t border-slate-800">
+            {cases.map((item, index) => (
+                <div class="accordion-item border-b border-slate-800 reveal-results" style={`transition-delay: ${index * 150}ms;`}>
+                    
+                    <!-- Fila Visible (Estilo Etiqueta de Expediente) -->
+                    <button class="accordion-header group flex justify-between items-center w-full py-6 md:py-8 text-left focus:outline-none">
+                        <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-16">
+                            <span class="text-[10px] font-bold tracking-[0.3em] text-slate-500 uppercase w-24 shrink-0">
+                                Exp. {item.year}
+                            </span>
+                            <!-- El título ahora es una etiqueta estructurada, no compite -->
+                            <span class="text-[11px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-300 group-hover:text-white transition-colors duration-300">
+                                {item.title}
+                            </span>
+                        </div>
+                        
+                        <!-- Ícono Animado (+ / -) -->
+                        <div class="relative w-4 h-4 md:w-5 md:h-5 flex items-center justify-center shrink-0 ml-4">
+                            <span class="absolute w-full h-[1px] bg-slate-500 group-hover:bg-white transition-colors duration-300"></span>
+                            <span class="vertical-line absolute w-[1px] h-full bg-slate-500 group-hover:bg-white transition-transform duration-500 ease-in-out"></span>
+                        </div>
+                    </button>
+                    
+                    <!-- Contenido Desplegable -->
+                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                        <div class="overflow-hidden">
+                            <!-- Agregamos un borde superior sutil interno y padding -->
+                            <div class="pb-8 pt-6 flex flex-col md:flex-row items-start gap-6 md:gap-16 border-t border-slate-800/50 mt-2">
+                                
+                                <!-- Columna de Espaciado (Desktop) -->
+                                <div class="hidden md:block w-24 shrink-0"></div>
+                                
+                                <!-- Resultado Destacado (Único Protagonista) -->
+                                <div class="md:w-1/3 shrink-0">
+                                    <div class="text-[9px] font-bold tracking-[0.3em] text-slate-500 uppercase mb-4">Resolución Lograda</div>
+                                    <div class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-2 leading-none tracking-tight">
+                                        {item.amount}
+                                    </div>
+                                </div>
+                                
+                                <!-- Descripción Completa -->
+                                <div class="md:w-1/2 md:pt-7">
+                                    <p class="text-slate-400 text-sm md:text-base font-light leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            ))}
+        </div>
+        
+    </div>
+</section>
+
+<style>
+    .reveal-results {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .reveal-results.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Clases para el estado abierto */
+    .accordion-item.is-open .accordion-content {
+        grid-template-rows: 1fr;
+    }
+    .accordion-item.is-open .vertical-line {
+        transform: rotate(90deg);
+        opacity: 0;
+    }
+    .accordion-item.is-open .accordion-header span {
+        color: white;
+    }
+</style>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal-results').forEach(el => observer.observe(el));
+
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const currentItem = header.parentElement;
+                const isOpen = currentItem.classList.contains('is-open');
+                
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('is-open');
+                });
+
+                if (!isOpen) {
+                    currentItem.classList.add('is-open');
+                }
+            });
+        });
+    });
+</script>
