@@ -13,7 +13,6 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<!-- 1. ELIMINAMOS "scroll-smooth" DE AQUÍ -->
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
@@ -30,64 +29,32 @@ const { title } = Astro.props;
         <Footer />
         <WhatsAppFloat />
 
-        <!-- 2. CSS Obligatorio para que Lenis no se rompa -->
-        <style is:global>
-            html.lenis, html.lenis body {
-                height: auto;
-            }
-            .lenis.lenis-smooth {
-                scroll-behavior: auto !important;
-            }
-            .lenis.lenis-smooth [data-lenis-prevent] {
-                overscroll-behavior: contain;
-            }
-            .lenis.lenis-stopped {
-                overflow: hidden;
-            }
-            .lenis.lenis-smooth iframe {
-                pointer-events: none;
-            }
-        </style>
+        <!-- LA OPCIÓN NUCLEAR: Bypasseamos npm y Astro -->
+        <!-- 1. Cargamos el motor de Lenis directo desde el CDN -->
+        <script is:inline src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
-        <!-- 3. Script de Lenis adaptado para ViewTransitions -->
-        <script>
-            import Lenis from 'lenis';
+        <!-- 2. Inicializamos con is:inline para que funcione perfecto con ViewTransitions -->
+        <script is:inline>
+            let lenis;
 
-            let lenis: Lenis | null = null;
+            document.addEventListener('astro:page-load', () => {
+                // Si ya existe de la página anterior, lo matamos para no duplicar
+                if (lenis) {
+                    lenis.destroy();
+                }
 
-            function initLenis() {
-                // Si ya existe una instancia, la destruimos para no duplicar
-                if (lenis) lenis.destroy();
-
-                lenis = new Lenis({
+                // Iniciamos la nueva instancia usando window.Lenis (del CDN)
+                lenis = new window.Lenis({
                     duration: 1.2,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                    orientation: 'vertical',
-                    gestureOrientation: 'vertical',
-                    smoothWheel: true,
-                    wheelMultiplier: 1,
-                    touchMultiplier: 2,
+                    smoothWheel: true
                 });
 
-                function raf(time: number) {
-                    if (lenis) {
-                        lenis.raf(time);
-                    }
+                function raf(time) {
+                    lenis.raf(time);
                     requestAnimationFrame(raf);
                 }
 
                 requestAnimationFrame(raf);
-            }
-
-            // Inicializar cuando la página carga
-            document.addEventListener('astro:page-load', initLenis);
-
-            // Destruir justo antes de cambiar de página para evitar cuelgues
-            document.addEventListener('astro:before-swap', () => {
-                if (lenis) {
-                    lenis.destroy();
-                    lenis = null;
-                }
             });
         </script>
     </body>
