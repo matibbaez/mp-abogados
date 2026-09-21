@@ -3,19 +3,19 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
 import About from '../components/About.astro';
-import Media from '../components/Media.astro'; // 1. Lo importas aquí
-import Results from '../components/Results.astro'; // 2. Lo importas aquí
+import Media from '../components/Media.astro';
+import Results from '../components/Results.astro';
 ---
 
 <Layout title="MP Abogados | Especialistas en Accidentes de Tránsito">
-	<main>
-		<Hero />
-		<Services />
+    <main>
+        <Hero />
+        <Services />
         <About />
         <Media />
         <Results />
-		
-		<!-- Sección de Contacto Editorial -->
+        
+        <!-- Sección de Contacto Editorial -->
         <section id="contacto" class="py-24 md:py-40 px-6 lg:px-8 bg-slate-50 text-slate-950 relative overflow-hidden">
             <div class="max-w-7xl mx-auto relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
@@ -23,8 +23,8 @@ import Results from '../components/Results.astro'; // 2. Lo importas aquí
                     <!-- Columna Izquierda: Copy y Contacto Directo -->
                     <div class="reveal-contact flex flex-col">
                         <div class="inline-flex items-center space-x-3 mb-8 md:mb-12">
-                            <span class="w-8 h-[1px] bg-slate-950"></span>
-                            <span class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">Evaluación Confidencial</span>
+                            <span class="w-8 h-[1px] bg-accent"></span>
+                            <span class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-slate-500">Evaluación Inicial</span>
                         </div>
                         
                         <h2 class="text-4xl sm:text-5xl md:text-7xl font-bold font-serif leading-[1.05] tracking-tighter mb-8 md:mb-10">
@@ -32,27 +32,27 @@ import Results from '../components/Results.astro'; // 2. Lo importas aquí
                             <span class="text-slate-400 italic font-light">inmediata.</span>
                         </h2>
                         
-                        <p class="text-slate-500 font-light text-sm md:text-lg leading-relaxed mb-12 max-w-md">
-                            La intervención temprana asegura pruebas vitales y evita que las aseguradoras limiten sus derechos. Inicie la evaluación de su caso hoy mismo sin costo.
+                        <p class="text-slate-600 font-light text-sm md:text-lg leading-relaxed mb-12 max-w-md">
+                            No dejes que la aseguradora gane tiempo. La intervención temprana en un siniestro asegura pruebas vitales. Inicie la evaluación de su caso hoy mismo, sin costo.
                         </p>
 
-                        <!-- Datos de contacto minimalistas -->
+                        <!-- Datos de contacto -->
                         <div class="space-y-8">
                             <div class="flex items-start gap-6 group">
-                                <div class="mt-1 text-slate-300 group-hover:text-slate-950 transition-colors duration-500">
-                                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                <div class="mt-1 text-slate-400 group-hover:text-accent transition-colors duration-500">
+                                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                                 </div>
                                 <div>
-                                    <div class="text-[10px] tracking-[0.2em] text-slate-400 uppercase font-bold mb-2">Línea Directa</div>
-                                    <div class="text-xl md:text-3xl font-serif font-bold tracking-tight text-slate-950">+54 (11) 15-XXXX-XXXX</div>
+                                    <div class="text-[10px] tracking-[0.2em] text-slate-500 uppercase font-bold mb-2">Línea Directa (WhatsApp)</div>
+                                    <div class="text-xl md:text-3xl font-serif font-bold tracking-tight text-slate-950">+54 9 11 6880-9555</div>
                                 </div>
                             </div>
                             <div class="flex items-start gap-6 group">
-                                <div class="mt-1 text-slate-300 group-hover:text-slate-950 transition-colors duration-500">
-                                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                <div class="mt-1 text-slate-400 group-hover:text-accent transition-colors duration-500">
+                                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                                 </div>
                                 <div>
-                                    <div class="text-[10px] tracking-[0.2em] text-slate-400 uppercase font-bold mb-2">Casos & Consultas</div>
+                                    <div class="text-[10px] tracking-[0.2em] text-slate-500 uppercase font-bold mb-2">Recepción de Causas</div>
                                     <div class="text-xl md:text-3xl font-serif font-bold tracking-tight text-slate-950">contacto@mpabogados.com.ar</div>
                                 </div>
                             </div>
@@ -61,34 +61,35 @@ import Results from '../components/Results.astro'; // 2. Lo importas aquí
 
                     <!-- Columna Derecha: Formulario Documental -->
                     <div class="reveal-contact relative mt-12 lg:mt-0" style="transition-delay: 200ms;">
-                        <!-- Cuadro de fondo para darle estructura editorial -->
                         <div class="absolute -inset-4 md:-inset-8 bg-white border border-slate-200 shadow-2xl z-0"></div>
 
-                        <form class="relative z-10 space-y-10 p-4 md:p-8">
+                        <form id="contact-form" class="relative z-10 space-y-10 p-4 md:p-8">
                             <div class="space-y-2 relative group">
-                                <label class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-slate-950">Nombre Completo</label>
-                                <input type="text" class="w-full bg-transparent border-b border-slate-300 py-2 md:py-3 text-slate-950 focus:outline-none focus:border-slate-950 transition-colors rounded-none placeholder-slate-200 text-lg md:text-2xl font-serif" placeholder="Ej. Juan Pérez" required />
+                                <label for="nombre" class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-accent">Nombre Completo</label>
+                                <input type="text" id="nombre" class="w-full bg-transparent border-b border-slate-300 py-2 md:py-3 text-slate-950 focus:outline-none focus:border-accent transition-colors rounded-none placeholder-slate-200 text-lg md:text-2xl font-serif" placeholder="Ej. Juan Pérez" required minlength="3" />
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                                 <div class="space-y-2 relative group">
-                                    <label class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-slate-950">Teléfono</label>
-                                    <input type="tel" class="w-full bg-transparent border-b border-slate-300 py-2 md:py-3 text-slate-950 focus:outline-none focus:border-slate-950 transition-colors rounded-none placeholder-slate-200 text-lg md:text-2xl font-serif" placeholder="Cód. área + número" required />
+                                    <label for="telefono" class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-accent">Teléfono de Contacto</label>
+                                    <input type="tel" id="telefono" class="w-full bg-transparent border-b border-slate-300 py-2 md:py-3 text-slate-950 focus:outline-none focus:border-accent transition-colors rounded-none placeholder-slate-200 text-lg md:text-2xl font-serif" placeholder="Cód. área + número" required minlength="8" />
                                 </div>
                                 <div class="space-y-2 relative group">
-                                    <label class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-slate-950">Email</label>
-                                    <input type="email" class="w-full bg-transparent border-b border-slate-300 py-2 md:py-3 text-slate-950 focus:outline-none focus:border-slate-950 transition-colors rounded-none placeholder-slate-200 text-lg md:text-2xl font-serif" placeholder="correo@ejemplo.com" required />
+                                    <label for="vehiculo" class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-accent">Vehículo (Auto/Moto)</label>
+                                    <input type="text" id="vehiculo" class="w-full bg-transparent border-b border-slate-300 py-2 md:py-3 text-slate-950 focus:outline-none focus:border-accent transition-colors rounded-none placeholder-slate-200 text-lg md:text-2xl font-serif" placeholder="Ej. Moto Honda Wave" required />
                                 </div>
                             </div>
 
                             <div class="space-y-2 relative group pt-2">
-                                <label class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-slate-950">Descripción Breve del Siniestro</label>
-                                <textarea rows="3" class="w-full bg-transparent border-b border-slate-300 py-2 md:py-3 text-slate-950 focus:outline-none focus:border-slate-950 transition-colors rounded-none placeholder-slate-200 text-lg md:text-2xl font-serif resize-none" placeholder="Lugar, fecha y situación..." required></textarea>
+                                <label for="descripcion" class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-accent">Descripción del Siniestro</label>
+                                <textarea id="descripcion" rows="3" class="w-full bg-transparent border-b border-slate-300 py-2 md:py-3 text-slate-950 focus:outline-none focus:border-accent transition-colors rounded-none placeholder-slate-200 text-lg md:text-2xl font-serif resize-none" placeholder="Lugar, fecha y cómo ocurrió el choque..." required minlength="10"></textarea>
                             </div>
                             
                             <button type="submit" class="w-full group relative flex justify-center items-center bg-slate-950 text-white px-10 py-5 md:py-6 overflow-hidden rounded-sm transition-all duration-300 hover:shadow-2xl mt-4">
-                                <span class="relative z-10 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">Enviar Consulta Confidencial</span>
-                                <div class="absolute inset-0 bg-slate-800 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
+                                <span class="relative z-10 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] group-hover:text-white transition-colors duration-300">
+                                    Enviar Caso a WhatsApp
+                                </span>
+                                <div class="absolute inset-0 bg-accent transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
                             </button>
                         </form>
                     </div>
@@ -96,7 +97,7 @@ import Results from '../components/Results.astro'; // 2. Lo importas aquí
                 </div>
             </div>
         </section>
-	</main>
+    </main>
 </Layout>
 
 <style>
@@ -113,22 +114,46 @@ import Results from '../components/Results.astro'; // 2. Lo importas aquí
 
 <script>
     document.addEventListener('astro:page-load', () => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
+                    obs.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        const elementsToReveal = document.querySelectorAll('.reveal-contact');
-        elementsToReveal.forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal-contact').forEach(el => observer.observe(el));
+
+        const form = document.getElementById('contact-form') as HTMLFormElement | null;
+        
+        if(form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); 
+
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                const nombreInput = document.getElementById('nombre') as HTMLInputElement | null;
+                const telefonoInput = document.getElementById('telefono') as HTMLInputElement | null;
+                const vehiculoInput = document.getElementById('vehiculo') as HTMLInputElement | null;
+                const descripcionInput = document.getElementById('descripcion') as HTMLTextAreaElement | null;
+
+                const nombre = nombreInput?.value.trim() || '';
+                const telefono = telefonoInput?.value.trim() || '';
+                const vehiculo = vehiculoInput?.value.trim() || '';
+                const descripcion = descripcionInput?.value.trim() || '';
+
+                const numeroWhatsApp = "5491168809555"; 
+
+                const mensaje = `Hola MP Abogados, sufri un accidente de transito y necesito asesoria.%0A%0A*Mis datos:*%0A- Nombre: ${nombre}%0A- Teléfono: ${telefono}%0A- Vehículo: ${vehiculo}%0A%0A*Detalles del Siniestro:*%0A${descripcion}`;
+                
+                const url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+                window.open(url, '_blank');
+            });
+        }
     });
 </script>

@@ -1,38 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 @layer utilities {
   .animate-fade-in-up {
-    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   
   .animate-slow-zoom {
-    animation: slowZoom 20s ease-in-out infinite alternate;
+    animation: slowZoom 25s ease-in-out infinite alternate;
   }
 }
 
 @keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slowZoom {
   0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
+  100% { transform: scale(1.05); }
 }
 
 html {
   font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
-  background-color: #f8fafc;
+  background-color: #0f172a; /* Mantenemos el fondo oscuro elegante */
 }
 
+@theme {
+  --color-accent: #1e3a8a; /* Azul institucional */
+  --color-highlight: #cbd5e1; /* Gris claro/Plata para detalles refinados */
+}
+
+/* Aplicamos la fuente clásica a todos los títulos */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
 }
@@ -41,14 +41,4 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-}
-
-/* Utilidad para un fade-in fluido */
-.fade-in {
-  animation: fadeIn 0.8s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
 }

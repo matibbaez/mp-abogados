@@ -1,40 +1,40 @@
 ---
 const reels = [
+    {
+      id: "reel-2",
+      title: "Caso Real: Oferta inicial vs. Lo que correspondía",
+      category: "Casos de Éxito",
+      description: "Un cliente llegó convencido de que la baja indemnización que le ofrecían era la única opción. Revisamos el expediente, asumimos su defensa y logramos un resarcimiento ampliamente superior. Una buena asesoría marca la diferencia.",
+      image: "/reel-casoreal.jpg", 
+      link: "https://www.instagram.com/p/DbBy5xYEqlb/"
+},
   {
     id: "reel-1",
-    title: "CHOQUE EN CADENA: ¿Quién tuvo la culpa?",
-    category: "Siniestros Viales",
-    description: "En los siniestros múltiples, determinar la responsabilidad inicial es fundamental. Las aseguradoras suelen intentar diluir la culpa para evitar pagos. Explicamos cómo la jurisprudencia actual evalúa la distancia de frenado y la responsabilidad objetiva del vehículo que inicia el impacto.",
-    image: "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?q=80&w=800&auto=format&fit=crop", // Nota: Reemplazar con la miniatura real del reel
-    link: "https://instagram.com/abogados.transitomp"
-  },
-  {
-    id: "reel-2",
-    title: "Si laburás con la moto todo el día, tenés que saber ESTO.",
-    category: "Motociclistas",
-    description: "Los trabajadores de aplicaciones y mensajería en moto están expuestos constantemente y sufren de un fuerte prejuicio administrativo. Aclaramos qué hacer inmediatamente después de un impacto y cómo evitar que la aseguradora invoque 'culpa concurrente' sin pruebas fehacientes.",
-    image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800&auto=format&fit=crop", // Nota: Reemplazar con la miniatura real del reel
-    link: "https://instagram.com/abogados.transitomp"
+    title: "El ALIADO LEGAL que tu productora necesita",
+    category: "Productores de Seguros",
+    description: "Nos sumamos como soporte jurídico en siniestros con lesiones o daños graves. Fidelizás la confianza de tu cliente, delegás el 100% del trámite sin carga administrativa y monetizás la gestión. Dejá de pelear por los casos difíciles.",
+    image: "/reel-aliado.jpg", 
+    link: "https://www.instagram.com/p/Dbv2a_PCe1C/"
   },
   {
     id: "reel-3",
-    title: "Accidente en UBER o CABIFY: Esto es lo que tenés que hacer.",
-    category: "Plataformas",
-    description: "Sufrir un accidente mientras viajás como pasajero o conducís para una plataforma de transporte privado tiene reglas legales muy específicas. Detallamos cómo opera el seguro de la aplicación en conjunto con el seguro particular y los pasos urgentes para asegurar tu indemnización.",
-    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800&auto=format&fit=crop", // Nota: Reemplazar con la miniatura real del reel
-    link: "https://instagram.com/abogados.transitomp"
+    title: "¿Tu aseguradora es una de ESTAS?",
+    category: "Alerta Legal",
+    description: "Existen compañías de seguros que aplican sistemáticamente tácticas de desgaste y ofertas a la baja. Te explicamos cómo identificar estas prácticas abusivas y qué hacer inmediatamente para blindar tu reclamo y tu patrimonio.",
+    image: "/reel-aseguradora.jpg", 
+    link: "https://www.instagram.com/p/Davx_9NDqFb/"
   }
 ];
 ---
-<section id="media" class="py-24 md:py-32 px-6 lg:px-8 bg-white text-slate-950 relative overflow-hidden">
+<section id="media" class="py-24 md:py-32 px-6 lg:px-8 bg-slate-50 text-slate-950 relative overflow-hidden">
     <div class="max-w-7xl mx-auto relative z-10">
         
         <!-- Cabecera de Sección -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-8 reveal-media">
             <div class="max-w-2xl">
                 <div class="inline-flex items-center space-x-3 mb-6 md:mb-8">
-                    <span class="w-8 h-[1px] bg-slate-950"></span>
-                    <span class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">Divulgación Legal</span>
+                    <span class="w-8 h-[1px] bg-accent"></span>
+                    <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-500">Divulgación Legal</span>
                 </div>
                 <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-[1.05] tracking-tighter">
                     Conocimiento que <br/>
@@ -42,42 +42,45 @@ const reels = [
                 </h2>
             </div>
             <div class="pb-2">
-                <a href="https://instagram.com/abogados.transitomp" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-950 hover:text-slate-500 transition-colors">
-                    <span>Archivo Completo</span>
+                <a href="https://instagram.com/abogados.transitomp" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-950 hover:text-accent transition-colors">
+                    <span>Ver Archivo en Instagram</span>
                     <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
             </div>
         </div>
 
-        <!-- Grilla de Tarjetas Interactivas -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Grilla de Tarjetas Interactivas (Proporción Reel 9:16) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {reels.map((reel, index) => (
                 <button 
                     data-modal-trigger={reel.id}
-                    class="group relative block h-[400px] md:h-[500px] w-full overflow-hidden rounded-sm reveal-media text-left" 
+                    class="group relative block w-full aspect-[9/16] overflow-hidden rounded-sm reveal-media text-left shadow-lg hover:shadow-2xl transition-shadow duration-500" 
                     style={`transition-delay: ${index * 150}ms;`}
                 >
-                    <!-- Imagen de Fondo -->
+                    <!-- Imagen de Fondo (Portada del Reel) -->
                     <div class="absolute inset-0 z-0 bg-slate-900">
                         <img 
                             src={reel.image} 
                             alt={reel.title} 
-                            class="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out opacity-80 group-hover:opacity-100"
+                            class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out opacity-90 group-hover:opacity-100"
+                            onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop'"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500"></div>
+                        <!-- Gradiente para legibilidad -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-500"></div>
                     </div>
 
                     <!-- Contenido de la Tarjeta -->
                     <div class="absolute inset-0 z-10 flex flex-col justify-between p-6 md:p-8">
-                        <div class="self-end w-10 h-10 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-sm group-hover:border-white group-hover:bg-white group-hover:text-slate-950 text-white transition-all duration-500 transform group-hover:scale-110">
-                            <svg class="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <!-- Botón de Play -->
+                        <div class="self-end w-10 h-10 rounded-full border border-white/50 flex items-center justify-center backdrop-blur-md group-hover:border-accent group-hover:bg-accent group-hover:text-white text-white transition-all duration-500 transform group-hover:scale-110">
+                            <svg class="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         
                         <div>
-                            <div class="inline-block px-3 py-1 border border-white/20 backdrop-blur-md rounded-sm mb-4">
+                            <div class="inline-block px-3 py-1 border border-white/20 backdrop-blur-md rounded-sm mb-4 bg-slate-950/30">
                                 <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-200">{reel.category}</span>
                             </div>
-                            <h3 class="text-xl md:text-2xl font-serif font-bold text-white leading-tight group-hover:text-slate-200 transition-colors duration-300">
+                            <h3 class="text-xl md:text-2xl font-serif font-bold text-white leading-tight group-hover:text-blue-100 transition-colors duration-300">
                                 {reel.title}
                             </h3>
                         </div>
@@ -91,31 +94,26 @@ const reels = [
     {reels.map((reel) => (
         <div id={`modal-${reel.id}`} class="fixed inset-0 z-[100] hidden items-center justify-center px-4 md:px-0">
             
-            <!-- Backdrop Overlay (Oscurece el fondo) -->
             <div class="modal-backdrop absolute inset-0 bg-slate-950/80 backdrop-blur-md opacity-0 transition-opacity duration-500 cursor-pointer"></div>
             
-            <!-- Contenedor del Modal (Diseño Split) -->
             <div class="modal-content relative bg-slate-50 w-full max-w-4xl rounded-sm shadow-2xl flex flex-col md:flex-row overflow-hidden opacity-0 translate-y-12 transition-all duration-500 max-h-[90dvh]">
                 
-                <!-- Botón de Cerrar (X) -->
-                <button class="modal-close absolute top-4 right-4 md:top-6 md:right-6 z-20 w-10 h-10 bg-white/50 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border md:border-none border-slate-200 rounded-full md:rounded-none flex items-center justify-center text-slate-950 md:text-slate-400 hover:text-slate-950 transition-colors">
+                <button class="modal-close absolute top-4 right-4 md:top-6 md:right-6 z-20 w-10 h-10 bg-white/80 backdrop-blur-md border border-slate-200 rounded-full flex items-center justify-center text-slate-600 hover:text-accent hover:border-accent transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
 
-                <!-- Mitad Visual (Imagen / Cover) -->
                 <div class="md:w-1/2 relative h-64 md:h-auto bg-slate-900">
-                    <img src={reel.image} alt={reel.title} class="w-full h-full object-cover grayscale-[20%]" />
-                    <div class="absolute inset-0 bg-slate-950/20 flex items-center justify-center">
-                        <div class="w-16 h-16 rounded-full bg-slate-950/60 backdrop-blur-md flex items-center justify-center text-white border border-white/20">
-                            <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>
+                    <img src={reel.image} alt={reel.title} class="w-full h-full object-cover grayscale-[10%]" onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop'" />
+                    <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-accent/90 backdrop-blur-md flex items-center justify-center text-white shadow-lg">
+                            <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mitad Informativa (Textos y Call to Action) -->
                 <div class="md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center overflow-y-auto">
                     <div class="inline-flex items-center space-x-3 mb-6">
-                        <span class="w-6 h-[1px] bg-slate-300"></span>
+                        <span class="w-6 h-[1px] bg-accent"></span>
                         <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500">{reel.category}</span>
                     </div>
                     
@@ -130,9 +128,9 @@ const reels = [
                     <a href={reel.link} target="_blank" rel="noopener noreferrer" class="group relative flex justify-center items-center bg-slate-950 text-white px-8 py-5 overflow-hidden rounded-sm transition-all duration-300 hover:shadow-xl w-full sm:w-auto">
                         <span class="relative z-10 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] flex items-center gap-3">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                            Ver Reel en Instagram
+                            Ver Reel Completo
                         </span>
-                        <div class="absolute inset-0 bg-slate-800 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
+                        <div class="absolute inset-0 bg-accent transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
                     </a>
                 </div>
             </div>
@@ -155,7 +153,6 @@ const reels = [
 
 <script>
     document.addEventListener('astro:page-load', () => {
-        // 1. Observer para revelar al hacer scroll
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -168,24 +165,19 @@ const reels = [
 
         document.querySelectorAll('.reveal-media').forEach(el => observer.observe(el));
 
-        // 2. Lógica de los Modales
         const triggers = document.querySelectorAll('[data-modal-trigger]');
         
-        const openModal = (id) => {
+        const openModal = (id: string) => {
             const modal = document.getElementById(`modal-${id}`);
             if (!modal) return;
             
             const backdrop = modal.querySelector('.modal-backdrop');
             const content = modal.querySelector('.modal-content');
             
-            // Mostrar contenedor
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            
-            // Lock de scroll en el body
             document.body.style.overflow = 'hidden';
             
-            // Animación de entrada (pequeño delay para que el display block surta efecto)
             setTimeout(() => {
                 backdrop?.classList.replace('opacity-0', 'opacity-100');
                 content?.classList.replace('opacity-0', 'opacity-100');
@@ -193,35 +185,32 @@ const reels = [
             }, 10);
         };
 
-        const closeModal = (modal) => {
+        const closeModal = (modal: HTMLElement) => {
             const backdrop = modal.querySelector('.modal-backdrop');
             const content = modal.querySelector('.modal-content');
             
-            // Animación de salida
             backdrop?.classList.replace('opacity-100', 'opacity-0');
             content?.classList.replace('opacity-100', 'opacity-0');
             content?.classList.replace('translate-y-0', 'translate-y-12');
             
-            // Restaurar scroll y ocultar contenedor tras la animación
             setTimeout(() => {
                 modal.classList.remove('flex');
                 modal.classList.add('hidden');
                 document.body.style.overflow = '';
-            }, 500); // 500ms coincide con duration-500 de Tailwind
+            }, 500);
         };
 
-        // Asignar eventos de apertura
         triggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const id = trigger.getAttribute('data-modal-trigger');
-                openModal(id);
+                if (id) openModal(id);
             });
         });
 
-        // Asignar eventos de cierre (Botón X o clic en el fondo oscuro)
         document.querySelectorAll('.modal-close, .modal-backdrop').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const modal = e.target.closest('.fixed.inset-0');
+                const target = e.target as HTMLElement | null;
+                const modal = target?.closest('.fixed.inset-0') as HTMLElement | null;
                 if (modal) closeModal(modal);
             });
         });
