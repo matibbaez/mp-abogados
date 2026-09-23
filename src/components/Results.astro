@@ -1,125 +1,296 @@
 ---
-const cases = [
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+// 1. Estos 3 testimonios largos quedan FIJOS en la portada para mantener el diseño impecable
+const featuredTestimonials = [
   {
-    amount: "Acuerdo Total",
-    title: "Siniestro Múltiple en Autopista",
-    description: "La aseguradora intentó evadir el pago catalogando el hecho como 'culpa concurrente'. Mediante peritaje accidentológico propio, demostramos la responsabilidad objetiva del tercero, logrando la indemnización total por incapacidad sobreviniente y daño moral.",
-    year: "2023"
+    client: "Patricia",
+    tag: "Resolución Rápida",
+    quote: "Durante el proceso de la resolución del caso me sentí súper acompañada y guiada en cada paso. Recibí la atención y explicación necesaria. Quedé muy contenta con la rápida resolución. Es para recomendar!!",
+    date: "Hace 1 semana",
+    rating: 5
   },
   {
-    amount: "Cobertura 100%",
-    title: "Destrucción Total vs. Valor Venal",
-    description: "Rechazamos de plano la liquidación inicial que no cubría el valor real del vehículo en el mercado. Forzamos la actualización del capital en sede judicial, sumando intereses punitorios por privación de uso comercial.",
-    year: "2024"
+    client: "Julián",
+    tag: "Seguimiento Continuo",
+    quote: "Muy contento con el resultado. Todo fue aclarado de la mejor manera, hubo un seguimiento continuo y quedé satisfecho en todos los sentidos, por la atención y los tiempos pactados. Todo fue sin ningún inconveniente.",
+    date: "Hace 2 semanas",
+    rating: 5
   },
   {
-    amount: "Fallo Inédito",
-    title: "Defensa de Motociclista Vulnerado",
-    description: "Revocamos la injusta presunción de culpabilidad impuesta administrativamente al conductor de la motocicleta. Logramos el resarcimiento integral de gastos médicos futuros, lucro cesante y daño estético.",
-    year: "2024"
+    client: "Marcos T.",
+    tag: "Destrucción Total",
+    quote: "La aseguradora me daba vueltas para pagarme el valor real del auto. En el estudio tomaron el caso y forzaron el pago de la destrucción total actualizada. Excelente trato humano en un momento de mucho estrés.",
+    date: "Hace 1 mes",
+    rating: 5
   }
 ];
+
+// 2. Estos son extra por si la base de datos está vacía, para que el modal no quede pelado
+const fallbackExtraTestimonials = [
+  {
+    client: "Sol Migueles",
+    tag: "Caso Complejo",
+    quote: "Agradezco al estudio de Abogados MP por la buena atención durante todo el caso, tanto para responder como para resolver todas nuestras inquietudes. Destaco la amabilidad y el buen trato que siempre recibimos. La resolución del caso fue excelente eso que estaba complicado de poder llegar a una pronta resolución. Sin duda los volvería a elegir por su profesionalismo y atención.",
+    date: "Reseña Verificada",
+    rating: 5
+  },
+  {
+    client: "Jose Barros",
+    tag: "Claridad y Atención",
+    quote: "Buenas tardes, la verdad de 10 la atención, de 10 la claridad de todo. Es para recomendar.",
+    date: "Reseña Verificada",
+    rating: 5
+  },
+  {
+    client: "Christian",
+    tag: "Atención Cordial",
+    quote: "Hola! Buenas tardes, estoy muy conforme, la atención siempre muy cordial, con la mejor predisposición. Con el resultado también estoy muy conforme. Muchas gracias y los tendré en cuenta por si en el futuro necesito sus servicios.",
+    date: "Reseña Verificada",
+    rating: 5
+  },
+  {
+    client: "Shirly Di Palma",
+    tag: "Eficiencia",
+    quote: "Sisi muy conforme 🤗 la verdad todo súper rápido, muy profesionales y eficientes. Muchísimas gracias por todo!!!",
+    date: "Reseña Verificada",
+    rating: 5
+  },
+  {
+    client: "Luis Hernán G.",
+    tag: "Acompañamiento",
+    quote: "Me siento satisfecho con la rapidez que se resolvió. En cuanto al acompañamiento, sentí que siempre estuvieron para mis dudas. Estoy conforme con el resultado. Son muy amables. Gracias.",
+    date: "Reseña Verificada",
+    rating: 5
+  },
+  {
+    client: "Diego Encina",
+    tag: "Trámite Rápido",
+    quote: "La verdad una exelente atención. Me explicaste muchas cosas y mucha paciencia. La verdad te agradezco muchísimo y te agradezco lo rápido que fue el trámite. Mui contento con tu atención. Muchas gracias..",
+    date: "Reseña Verificada",
+    rating: 5
+  },
+  {
+    client: "Maximiliano V.",
+    tag: "Superó Expectativas",
+    quote: "La verdad quede muy conforme, las dudas que tuve fueron evacuadas y resultado fue más de lo esperado, muchísimas gracias y me alegra que pueda saber que puedo contar con tu atención 💪🏼",
+    date: "Reseña Verificada",
+    rating: 5
+  },
+  {
+    client: "Daiana Ferraiuolo",
+    tag: "Asesoría Completa",
+    quote: "Me sentí muy acompañada durante el proceso y asesorada, explicaste todo muy bien! Quede súper contenta con el resultado!🤗",
+    date: "Reseña Verificada",
+    rating: 5
+  },
+  {
+    client: "Leonel Carrillo",
+    tag: "Seguridad Legal",
+    quote: "La verdad que desde el primer día me sentí muy seguro y acompañado, cualquier duda que tenía me la pudieron explicar, quede muy conforme con el resultado. Muchísimas gracias por su servicio y su amabilidad",
+    date: "Reseña Verificada",
+    rating: 5
+  },
+  {
+    client: "Juan Canteros",
+    tag: "Gestión Exitosa",
+    quote: "Buenísimo, muchas gracias por todo sin vos esto no se podía haber solucionado, muchas gracias por tu trabajo",
+    date: "Reseña Verificada",
+    rating: 5
+  }
+];
+
+let dbReviews = [];
+
+// 3. Traemos las reseñas cortas/reales de Supabase
+try {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews?select=*&order=created_at.desc`, {
+        headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+        }
+    });
+    
+    if (response.ok) {
+        dbReviews = await response.json();
+    }
+} catch (error) {
+    console.error("Error cargando reseñas desde Supabase:", error);
+}
+
+// 4. Formateamos las de Supabase
+const formattedDbReviews = dbReviews.map(r => {
+    let dateStr = ""; 
+    if (r.created_at) {
+        const dateObj = new Date(r.created_at);
+        dateStr = new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'long', year: 'numeric' }).format(dateObj);
+    }
+
+    return {
+        client: r.name,
+        tag: r.tag,
+        quote: r.quote,
+        rating: r.rating || 5,
+        date: dateStr
+    };
+});
+
+// 5. El Modal va a mostrar TODO lo de Supabase, seguido por los testimonios extra de respaldo
+const modalTestimonials = [...formattedDbReviews, ...fallbackExtraTestimonials];
+
+// Helper para generar las 5 estrellas
+const renderStars = (rating: number) => {
+    let html = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            html += `<svg class="w-3 h-3 lg:w-4 lg:h-4 fill-current text-accent" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+        } else {
+            html += `<svg class="w-3 h-3 lg:w-4 lg:h-4 fill-current text-slate-800" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+        }
+    }
+    return html;
+};
 ---
-<section id="resultados" class="py-24 md:py-32 px-6 lg:px-8 bg-slate-950 text-white border-t border-slate-900">
+<section id="resultados" class="py-24 md:py-40 px-0 lg:px-8 bg-slate-950 text-white border-t border-slate-900 relative">
     <div class="max-w-7xl mx-auto">
-        
-        <!-- Cabecera de la Sección -->
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8 reveal-results">
-            <div class="max-w-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+            
+            <!-- Columna Izquierda: Cabecera -->
+            <div class="lg:col-span-5 lg:sticky lg:top-32 reveal-results px-6 lg:px-0">
                 <div class="inline-flex items-center space-x-3 mb-6">
                     <span class="w-8 h-[1px] bg-accent"></span>
-                    <span class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-slate-400">Track Record</span>
+                    <span class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-slate-400">Prueba Social</span>
                 </div>
-                <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-serif leading-[1.05] tracking-tighter">
-                    Resultados que <br/>
-                    <span class="text-slate-400 italic font-light">hablan por sí solos.</span>
+                <h2 class="text-5xl sm:text-6xl lg:text-[5.5rem] font-bold font-serif leading-[0.95] tracking-tighter mb-8 lg:mb-10">
+                    Nuestra <br/>
+                    <span class="text-slate-400 italic font-light">reputación.</span>
                 </h2>
-            </div>
-        </div>
+                
+                <p class="text-slate-500 font-light text-sm md:text-base leading-relaxed mb-10 lg:mb-12 max-w-sm">
+                    No le pedimos que confíe en nuestra palabra, sino en la de aquellos que ya superaron a las aseguradoras gracias a nuestra intervención.
+                </p>
 
-        <!-- Acordeón Interactivo Editorial -->
-        <div class="border-t border-slate-800">
-            {cases.map((item, index) => (
-                <div class="accordion-item border-b border-slate-800 reveal-results" style={`transition-delay: ${index * 150}ms;`}>
-                    
-                    <!-- Fila Visible (Estilo Etiqueta de Expediente) -->
-                    <button class="accordion-header group flex justify-between items-center w-full py-6 md:py-8 text-left focus:outline-none">
-                        <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-16">
-                            <span class="text-[10px] font-bold tracking-[0.3em] text-slate-500 uppercase w-24 shrink-0 transition-colors duration-300">
-                                Exp. {item.year}
-                            </span>
-                            <span class="text-[11px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-300 group-hover:text-white transition-colors duration-300">
-                                {item.title}
-                            </span>
-                        </div>
-                        
-                        <!-- Ícono Animado (+ / -) -->
-                        <div class="relative w-4 h-4 md:w-5 md:h-5 flex items-center justify-center shrink-0 ml-4">
-                            <span class="absolute w-full h-[1px] bg-slate-500 group-hover:bg-white transition-colors duration-300"></span>
-                            <span class="vertical-line absolute w-[1px] h-full bg-slate-500 group-hover:bg-white transition-transform duration-500 ease-in-out"></span>
-                        </div>
-                    </button>
-                    
-                    <!-- Contenido Desplegable -->
-                    <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out">
-                        <div class="overflow-hidden">
-                            <!-- Borde superior sutil interno y padding -->
-                            <div class="pb-8 pt-6 flex flex-col md:flex-row items-start gap-6 md:gap-16 border-t border-slate-800/50 mt-2">
-                                
-                                <!-- Columna de Espaciado (Desktop) -->
-                                <div class="hidden md:block w-24 shrink-0"></div>
-                                
-                                <!-- Resultado Destacado (Único Protagonista) -->
-                                <div class="md:w-1/3 shrink-0">
-                                    <div class="text-[9px] font-bold tracking-[0.3em] text-slate-500 uppercase mb-4">Resolución Lograda</div>
-                                    <div class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-2 leading-none tracking-tight">
-                                        {item.amount}
+                <div class="lg:hidden flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-accent mb-8">
+                    <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    <span>Deslizá para leer</span>
+                </div>
+
+                <button id="btn-open-testimonials" class="hidden lg:flex group relative justify-center items-center bg-transparent border border-slate-700 text-white px-8 py-5 overflow-hidden rounded-sm transition-all duration-300 w-full sm:w-auto">
+                    <span class="relative z-10 text-[10px] font-bold uppercase tracking-[0.2em] group-hover:text-white transition-colors duration-300">
+                        Abrir Archivo de Casos
+                    </span>
+                    <div class="absolute inset-0 bg-slate-800 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
+                </button>
+            </div>
+
+            <!-- Columna Derecha: Testimonios (Fijos) -->
+            <div class="lg:col-span-7 w-full">
+                <div class="flex overflow-x-auto lg:flex-col gap-4 lg:gap-24 snap-x snap-mandatory hide-scrollbar px-6 lg:px-0 lg:pl-10 pb-8 lg:pb-0">
+                    {featuredTestimonials.map((testimonio, index) => (
+                        <div class="snap-center shrink-0 w-[85vw] sm:w-[60vw] lg:w-full relative group bg-slate-900/60 border border-slate-800 p-8 rounded-sm lg:bg-transparent lg:border-none lg:p-0 lg:rounded-none flex flex-col justify-between reveal-results" style={`transition-delay: ${index * 150}ms;`}>
+                            
+                            <svg class="hidden lg:block w-10 h-10 text-slate-800 group-hover:text-accent transition-colors duration-500 mb-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                            </svg>
+                            
+                            <div class="relative z-10 flex-grow flex flex-col justify-center">
+                                <div class="lg:hidden flex items-center justify-between mb-4">
+                                    <div class="text-[9px] font-bold tracking-[0.2em] text-accent uppercase">
+                                        {testimonio.tag}
                                     </div>
+                                    <div class="flex gap-0.5" set:html={renderStars(testimonio.rating)} />
                                 </div>
                                 
-                                <!-- Descripción Completa -->
-                                <div class="md:w-1/2 md:pt-7">
-                                    <p class="text-slate-400 text-sm md:text-base font-light leading-relaxed">
-                                        {item.description}
-                                    </p>
+                                <p class="text-lg sm:text-xl lg:text-[2rem] font-serif font-light text-slate-300 lg:group-hover:text-white transition-colors duration-500 leading-snug mb-8">
+                                    {testimonio.quote}
+                                </p>
+                            </div>
+
+                            <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-slate-800/50 pt-6 mt-auto">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-slate-950 lg:bg-slate-900 flex items-center justify-center text-slate-500 font-serif font-bold text-sm border border-slate-800 shrink-0">
+                                        {testimonio.client.charAt(0).toUpperCase()}
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-sm text-white tracking-wide">{testimonio.client}</div>
+                                        <div class="hidden lg:block text-[9px] text-accent uppercase tracking-widest mt-0.5">{testimonio.tag}</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="hidden lg:flex gap-1" set:html={renderStars(testimonio.rating)} />
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-[9px] lg:text-[10px] text-slate-500 uppercase tracking-widest">{testimonio.date}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
+                    ))}
                 </div>
-            ))}
+
+                <div class="lg:hidden px-6 mt-4">
+                    <button id="btn-open-testimonials-mobile" class="group relative flex justify-center items-center bg-slate-900 border border-slate-800 text-white px-8 py-4 w-full rounded-sm transition-colors duration-300 hover:bg-slate-800 focus:outline-none">
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em]">Ver Archivo de Casos</span>
+                    </button>
+                </div>
+            </div>
         </div>
-        
+    </div>
+
+    <!-- Modal de Archivo de Testimonios -->
+    <div id="modal-testimonios" class="fixed inset-0 z-[100] hidden items-center justify-center px-4 md:px-6">
+        <div class="modal-backdrop-test absolute inset-0 bg-slate-950/90 backdrop-blur-md opacity-0 transition-opacity duration-500 cursor-pointer"></div>
+        <div class="modal-content-test relative bg-slate-900 border border-slate-800 w-full max-w-3xl rounded-sm shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-12 transition-all duration-500 max-h-[85dvh]">
+            
+            <div class="flex justify-between items-center p-6 md:p-8 border-b border-slate-800 bg-slate-950 sticky top-0 z-20">
+                <div>
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-white">Archivo de Casos</h3>
+                    <div class="text-slate-400 text-[10px] md:text-xs tracking-widest uppercase mt-2">Mensajes Reales de Clientes</div>
+                </div>
+                <button class="modal-close-test w-10 h-10 border border-slate-700 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:border-white transition-colors focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6">
+                {modalTestimonials.map((testimonio) => (
+                    <div class="bg-slate-950/50 border border-slate-800 p-6 md:p-8 rounded-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <div class="font-serif font-bold text-lg text-white">{testimonio.client}</div>
+                                <div class="text-[9px] font-bold tracking-[0.2em] text-slate-500 uppercase mt-1">
+                                    {testimonio.tag}
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end gap-2">
+                                <div class="flex gap-0.5" set:html={renderStars(testimonio.rating)} />
+                                <span class="text-[10px] text-slate-500 uppercase tracking-widest">
+                                    {testimonio.date}
+                                </span>
+                            </div>
+                        </div>
+                        <p class="text-slate-300 text-sm font-light leading-relaxed italic">
+                            "{testimonio.quote}"
+                        </p>
+                    </div>
+                ))}
+            </div>
+            
+            <div class="p-6 border-t border-slate-800 bg-slate-950 text-center">
+                <!-- Se cambió el enlace para que abra WhatsApp en una pestaña nueva -->
+                <a href="https://wa.me/5491168809555?text=Hola,%20estuve%20leyendo%20los%20casos%20de%20%C3%A9xito%20y%20me%20gustar%C3%ADa%20que%20eval%C3%BAen%20mi%20caso%20gratis." target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-accent text-white px-8 py-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] rounded-sm hover:bg-blue-600 transition-colors">
+                    Evaluar mi caso gratis
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 
 <style>
-    .reveal-results {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .reveal-results.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    /* Clases para el estado abierto */
-    .accordion-item.is-open .accordion-content {
-        grid-template-rows: 1fr;
-    }
-    .accordion-item.is-open .vertical-line {
-        transform: rotate(90deg);
-        opacity: 0;
-    }
-    /* Ahora al abrirse, el título y el ícono toman el azul institucional */
-    .accordion-item.is-open .accordion-header span:not(.text-slate-500) {
-        color: var(--color-highlight, #3b82f6); 
-    }
-    .accordion-item.is-open .accordion-header .absolute {
-        background-color: var(--color-highlight, #3b82f6); 
-    }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .reveal-results { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal-results.is-visible { opacity: 1; transform: translateY(0); }
 </style>
 
 <script>
@@ -135,22 +306,44 @@ const cases = [
 
         document.querySelectorAll('.reveal-results').forEach(el => observer.observe(el));
 
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        const btnOpenDesktop = document.getElementById('btn-open-testimonials');
+        const btnOpenMobile = document.getElementById('btn-open-testimonials-mobile');
+        const modal = document.getElementById('modal-testimonios');
         
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const currentItem = header.parentElement;
-                if (!currentItem) return;
-                
-                const isOpen = currentItem.classList.contains('is-open');
-                
-                document.querySelectorAll('.accordion-item').forEach(item => {
-                    item.classList.remove('is-open');
-                });
+        if (!modal) return;
 
-                if (!isOpen) {
-                    currentItem.classList.add('is-open');
-                }
+        const backdrop = modal.querySelector('.modal-backdrop-test');
+        const content = modal.querySelector('.modal-content-test');
+
+        const openModal = () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                backdrop?.classList.replace('opacity-0', 'opacity-100');
+                content?.classList.replace('opacity-0', 'opacity-100');
+                content?.classList.replace('translate-y-12', 'translate-y-0');
+            }, 10);
+        };
+
+        const closeModal = () => {
+            backdrop?.classList.replace('opacity-100', 'opacity-0');
+            content?.classList.replace('opacity-100', 'opacity-0');
+            content?.classList.replace('translate-y-0', 'translate-y-12');
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 500);
+        };
+
+        if (btnOpenDesktop) btnOpenDesktop.addEventListener('click', openModal);
+        if (btnOpenMobile) btnOpenMobile.addEventListener('click', openModal);
+
+        document.querySelectorAll('.modal-close-test, .modal-backdrop-test').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal();
             });
         });
     });

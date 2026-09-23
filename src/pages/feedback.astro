@@ -1,0 +1,290 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<!-- Le pasamos hideNav={true} para que el Layout apague el menú -->
+<Layout title="MP Abogados | Evalúe nuestro servicio" hideNav={true}>
+    
+    <!-- Volvimos a un padding normal (py-12) porque ya no hay Navbar fijo -->
+    <main class="min-h-[100dvh] bg-slate-950 text-white flex flex-col justify-center py-12 px-4 sm:px-6">
+        
+        <div class="max-w-xl w-full mx-auto bg-slate-900 border border-slate-800 p-6 sm:p-8 md:p-10 rounded-sm shadow-2xl relative overflow-hidden">
+            
+            <div class="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-accent/10 blur-3xl rounded-full pointer-events-none"></div>
+
+            <div id="review-container" class="relative z-10 transition-all duration-500">
+                
+                <div class="mb-8 md:mb-10 text-center">
+                    <div class="inline-flex items-center space-x-3 mb-3 md:mb-4">
+                        <span class="w-6 h-[1px] bg-accent"></span>
+                        <span class="text-[9px] md:text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">Control de Calidad</span>
+                        <span class="w-6 h-[1px] bg-accent"></span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white leading-tight tracking-tighter mb-3 md:mb-4">
+                        ¿Cómo fue su experiencia <br class="hidden sm:block"/>con MP Abogados?
+                    </h1>
+                    <p class="text-slate-400 font-light text-xs sm:text-sm max-w-sm mx-auto">
+                        Su opinión nos ayuda a mantener nuestro estándar de excelencia legal.
+                    </p>
+                </div>
+
+                <form id="review-form" class="space-y-6 sm:space-y-8" novalidate>
+                    
+                    <div class="flex flex-col items-center space-y-2">
+                        <label class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Calificación</label>
+                        <div class="flex gap-1 sm:gap-2 cursor-pointer" id="star-rating">
+                            {[1, 2, 3, 4, 5].map((val) => (
+                                <svg data-value={val} class="star w-8 h-8 sm:w-10 sm:h-10 text-slate-700 transition-colors duration-200 hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                            ))}
+                        </div>
+                        <input type="hidden" id="rating-input" />
+                        <!-- Cambiamos hidden de tailwind por style="display: none" -->
+                        <span id="error-rating" class="text-red-500 font-bold text-[9px] uppercase tracking-widest mt-2 items-center gap-1" style="display: none;">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Por favor, seleccione una calificación.
+                        </span>
+                    </div>
+
+                    <div class="space-y-1 relative group">
+                        <label for="client-name" class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-accent">Su Nombre (o Iniciales)</label>
+                        <input type="text" id="client-name" class="w-full bg-transparent border-b border-slate-700 py-2 sm:py-3 text-white focus:outline-none focus:border-accent transition-colors rounded-none placeholder-slate-600 font-serif text-base sm:text-lg" placeholder="Ej. Juan P." />
+                        <span id="error-name" class="text-red-500 font-bold text-[9px] uppercase tracking-widest mt-2 items-center gap-1" style="display: none;">
+                            <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Ingrese al menos 2 caracteres.
+                        </span>
+                    </div>
+
+                    <div class="space-y-1 relative group">
+                        <label for="case-type" class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-accent">Tipo de Caso Resuelto</label>
+                        <select id="case-type" class="w-full bg-slate-900 border-b border-slate-700 py-2 sm:py-3 text-white focus:outline-none focus:border-accent transition-colors rounded-none font-serif text-base sm:text-lg appearance-none cursor-pointer">
+                            <option value="" disabled selected class="text-slate-600">Seleccione el motivo de su reclamo...</option>
+                            <option value="Siniestro en Auto">Siniestro en Auto</option>
+                            <option value="Siniestro en Moto">Siniestro en Moto</option>
+                            <option value="Choque en Cadena">Choque en Cadena</option>
+                            <option value="Plataformas (Uber/Cabify)">Plataformas (Uber/Cabify)</option>
+                            <option value="Destrucción Total">Destrucción Total</option>
+                            <option value="Otro Siniestro Vial">Otro Siniestro Vial</option>
+                        </select>
+                        <span id="error-type" class="text-red-500 font-bold text-[9px] uppercase tracking-widest mt-2 items-center gap-1" style="display: none;">
+                            <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Seleccione una categoría de caso.
+                        </span>
+                    </div>
+
+                    <div class="space-y-1 relative group">
+                        <label for="review-quote" class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] transition-colors group-focus-within:text-accent">Su Reseña</label>
+                        <textarea id="review-quote" rows="3" class="w-full bg-transparent border-b border-slate-700 py-2 sm:py-3 text-white focus:outline-none focus:border-accent transition-colors rounded-none placeholder-slate-600 font-serif text-base sm:text-lg resize-none" placeholder="Cuéntenos cómo fue la resolución de su caso..."></textarea>
+                        <span id="error-quote" class="text-red-500 font-bold text-[9px] uppercase tracking-widest mt-2 items-center gap-1" style="display: none;">
+                            <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            La reseña debe tener al menos 10 caracteres.
+                        </span>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full group relative flex justify-center items-center bg-accent text-white px-8 py-4 sm:py-5 overflow-hidden rounded-sm transition-all duration-300 hover:shadow-2xl mt-4">
+                        <span class="relative z-10 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em]" id="btn-text">Publicar Reseña</span>
+                        <div class="absolute inset-0 bg-blue-600 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
+                    </button>
+                </form>
+            </div>
+
+            <div id="success-message" class="hidden relative z-10 flex-col items-center justify-center text-center py-6 sm:py-10 opacity-0 transition-opacity duration-500">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6">
+                    <svg class="w-8 h-8 sm:w-10 sm:h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-3">¡Gracias por su confianza!</h2>
+                <p class="text-slate-400 font-light text-xs sm:text-sm mb-8 max-w-xs mx-auto">
+                    Hemos recibido su reseña. Nos enorgullece haber resuelto su caso con éxito.
+                </p>
+                <a href="/" class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] border-b border-slate-700 pb-1 hover:text-white hover:border-white transition-colors">Volver al inicio</a>
+            </div>
+
+        </div>
+    </main>
+</Layout>
+
+<style>
+    /* Estilo infalible para el error (forza el rojo ignorando Tailwind) */
+    .error-border {
+        border-color: #ef4444 !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        // En Astro, para usar variables de entorno dentro de un script de cliente,
+        // Vite las inyecta en tiempo de compilación a través de import.meta.env
+        const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+        const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+        const LOCAL_STORAGE_KEY = 'mp_review_submitted';
+        
+        const container = document.getElementById('review-container');
+        const successMsg = document.getElementById('success-message');
+        const form = document.getElementById('review-form') as HTMLFormElement | null;
+        
+        const showSuccess = () => {
+            if(container) container.classList.add('hidden');
+            if(successMsg) {
+                successMsg.classList.remove('hidden');
+                successMsg.style.display = 'flex';
+                setTimeout(() => successMsg.classList.replace('opacity-0', 'opacity-100'), 50);
+            }
+        };
+
+        if (localStorage.getItem(LOCAL_STORAGE_KEY)) {
+            showSuccess();
+            return;
+        }
+
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating-input') as HTMLInputElement | null;
+        const errorRating = document.getElementById('error-rating');
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', (e) => {
+                const target = e.currentTarget as HTMLElement;
+                const value = parseInt(target.getAttribute('data-value') || '0');
+                stars.forEach(s => {
+                    const sValue = parseInt(s.getAttribute('data-value') || '0');
+                    if (sValue <= value) s.classList.replace('text-slate-700', 'text-accent');
+                    else s.classList.replace('text-accent', 'text-slate-700');
+                });
+            });
+
+            star.addEventListener('mouseout', () => {
+                stars.forEach(s => {
+                    const sValue = parseInt(s.getAttribute('data-value') || '0');
+                    if (sValue <= currentRating) s.classList.replace('text-slate-700', 'text-accent');
+                    else s.classList.replace('text-accent', 'text-slate-700');
+                });
+            });
+
+            star.addEventListener('click', (e) => {
+                const target = e.currentTarget as HTMLElement;
+                currentRating = parseInt(target.getAttribute('data-value') || '0');
+                if (ratingInput) ratingInput.value = currentRating.toString();
+                if (errorRating) errorRating.style.display = 'none';
+                
+                stars.forEach(s => {
+                    const sValue = parseInt(s.getAttribute('data-value') || '0');
+                    if (sValue <= currentRating) s.classList.replace('text-slate-700', 'text-accent');
+                    else s.classList.replace('text-accent', 'text-slate-700');
+                });
+            });
+        });
+
+        const nameInput = document.getElementById('client-name') as HTMLInputElement | null;
+        const typeInput = document.getElementById('case-type') as HTMLSelectElement | null;
+        const quoteInput = document.getElementById('review-quote') as HTMLTextAreaElement | null;
+        
+        const errorName = document.getElementById('error-name');
+        const errorType = document.getElementById('error-type');
+        const errorQuote = document.getElementById('error-quote');
+
+        // Función que nunca falla para mostrar el error rojo
+        const toggleError = (input: HTMLElement | null, errorMsg: HTMLElement | null, hasError: boolean) => {
+            if (hasError) {
+                input?.classList.add('error-border');
+                if (errorMsg) errorMsg.style.display = 'flex';
+            } else {
+                input?.classList.remove('error-border');
+                if (errorMsg) errorMsg.style.display = 'none';
+            }
+        };
+
+        const validateForm = () => {
+            let isValid = true;
+
+            if (currentRating === 0) {
+                if (errorRating) errorRating.style.display = 'flex';
+                isValid = false;
+            }
+
+            if (!nameInput || nameInput.value.trim().length < 2) {
+                toggleError(nameInput, errorName, true);
+                isValid = false;
+            } else {
+                toggleError(nameInput, errorName, false);
+            }
+
+            if (!typeInput || typeInput.value === "") {
+                toggleError(typeInput, errorType, true);
+                isValid = false;
+            } else {
+                toggleError(typeInput, errorType, false);
+            }
+
+            if (!quoteInput || quoteInput.value.trim().length < 10) {
+                toggleError(quoteInput, errorQuote, true);
+                isValid = false;
+            } else {
+                toggleError(quoteInput, errorQuote, false);
+            }
+
+            return isValid;
+        };
+
+        nameInput?.addEventListener('input', () => toggleError(nameInput, errorName, false));
+        typeInput?.addEventListener('change', () => toggleError(typeInput, errorType, false));
+        quoteInput?.addEventListener('input', () => toggleError(quoteInput, errorQuote, false));
+
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                if (!validateForm()) return;
+
+                // Verificación de seguridad para asegurar que las variables de entorno cargaron
+                if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+                    console.error("Faltan variables de entorno de Supabase.");
+                    alert("Error de configuración del servidor. Contacte al administrador.");
+                    return;
+                }
+
+                const btnText = document.getElementById('btn-text');
+                const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+                if (btnText && submitBtn) {
+                    btnText.innerText = 'Enviando...';
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-70');
+                }
+
+                const payload = {
+                    name: nameInput!.value.trim(),
+                    tag: typeInput!.value,
+                    quote: quoteInput!.value.trim(),
+                    rating: currentRating
+                };
+
+                try {
+                    const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'apikey': SUPABASE_ANON_KEY,
+                            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                            'Prefer': 'return=minimal'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error(`Error al guardar reseña: ${response.statusText}`);
+
+                    localStorage.setItem(LOCAL_STORAGE_KEY, 'true');
+                    showSuccess();
+
+                } catch (error) {
+                    console.error("Error Supabase:", error);
+                    alert("Ocurrió un error de conexión. Por favor intente más tarde.");
+                    if (btnText && submitBtn) {
+                        btnText.innerText = 'Publicar Reseña';
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-70');
+                    }
+                }
+            });
+        }
+    });
+</script>
