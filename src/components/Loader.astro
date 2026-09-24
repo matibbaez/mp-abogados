@@ -1,0 +1,111 @@
+---
+// src/components/Loader.astro
+---
+<!-- Loader Container -->
+<div id="mp-loader" class="fixed inset-0 z-[9999] bg-slate-950 flex flex-col items-center justify-center transition-all duration-1000 ease-in-out">
+    
+    <div class="flex flex-col items-center transform scale-110 md:scale-125">
+        <!-- Logo SVG Animado -->
+        <svg class="w-20 h-16 shadow-2xl rounded-sm overflow-hidden" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="mp-grad-loader" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#1e3a8a" />
+                    <stop offset="100%" stop-color="#0f172a" />
+                </linearGradient>
+            </defs>
+            
+            <!-- Fondos que se expanden -->
+            <g class="bg-reveal" style="transform-origin: 60px 50px;">
+                <rect x="0" y="0" width="60" height="100" fill="#ffffff"/>
+                <rect x="60" y="0" width="60" height="100" fill="url(#mp-grad-loader)"/>
+            </g>
+            
+            <!-- Trazos que se dibujan -->
+            <polyline class="draw-stroke" pathLength="100" points="16,70 16,32 30,48 44,32 44,70" fill="none" stroke="#0f172a" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <path class="draw-stroke" pathLength="100" d="M 78 70 L 78 32 L 88 32 A 12 12 0 0 1 88 56 L 78 56" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        
+        <!-- Texto inferior que aparece (Con tipografía Sans-Serif corregida) -->
+        <div class="mt-6 overflow-hidden py-1">
+            <span class="loader-text block text-slate-400 tracking-[0.3em] uppercase text-[9px] md:text-[10px] font-bold opacity-0">
+                Estudio Jurídico
+            </span>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    /* Estado inicial para evitar parpadeos antes de que empiece la animación */
+    .bg-reveal {
+        transform: scaleX(0);
+        animation: scaleXReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+    }
+
+    .draw-stroke {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        /* Empieza a dibujarse al segundo 0.8 */
+        animation: drawLine 1.5s cubic-bezier(0.65, 0, 0.35, 1) 0.8s forwards;
+    }
+
+    .loader-text {
+        /* Sube el texto al segundo 1.8 */
+        animation: slideUpText 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards;
+    }
+
+    @keyframes scaleXReveal {
+        0% { transform: scaleX(0); }
+        100% { transform: scaleX(1); }
+    }
+
+    @keyframes drawLine {
+        0% { stroke-dashoffset: 100; }
+        100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes slideUpText {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<script is:inline>
+    // 1. Apenas lee el script (antes de renderizar la web), bloquea el scroll si es la primera visita
+    if (!sessionStorage.getItem('mp_loaded')) {
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+    }
+
+    document.addEventListener('astro:page-load', () => {
+        const loader = document.getElementById('mp-loader');
+        if (!loader) return;
+
+        // 2. Si ya lo vio en esta sesión, lo borra instantáneamente
+        if (sessionStorage.getItem('mp_loaded')) {
+            loader.style.display = 'none';
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+            return;
+        }
+
+        // 3. Marca la visita para que no vuelva a salir
+        sessionStorage.setItem('mp_loaded', 'true');
+        
+        // 4. Temporizador maestro: 3.5 segundos en total para disfrutar la animación
+        setTimeout(() => {
+            // Efecto de salida: Se desvanece y hace zoom
+            loader.classList.add('opacity-0', 'scale-110', 'pointer-events-none');
+            
+            // Libera el scroll para que el usuario pueda navegar
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+            
+            // Remueve el nodo HTML para que no estorbe en el DOM
+            setTimeout(() => {
+                loader.remove();
+            }, 1000); 
+            
+        }, 3500); 
+    });
+</script>
