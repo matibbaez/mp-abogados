@@ -2,9 +2,9 @@
 // src/components/Loader.astro
 ---
 <!-- Loader Container -->
-<div id="mp-loader" class="fixed inset-0 z-[9999] bg-slate-950 flex flex-col items-center justify-center transition-all duration-1000 ease-in-out">
+<div id="mp-loader" class="fixed inset-0 z-[9999] bg-slate-950 flex items-center justify-center transition-all duration-1000 ease-in-out">
     
-    <div class="flex flex-col items-center transform scale-110 md:scale-125">
+    <div class="transform scale-110 md:scale-125">
         <!-- Logo SVG Animado -->
         <svg class="w-20 h-16 shadow-2xl rounded-sm overflow-hidden" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -24,13 +24,6 @@
             <polyline class="draw-stroke" pathLength="100" points="16,70 16,32 30,48 44,32 44,70" fill="none" stroke="#0f172a" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
             <path class="draw-stroke" pathLength="100" d="M 78 70 L 78 32 L 88 32 A 12 12 0 0 1 88 56 L 78 56" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
         </svg>
-        
-        <!-- Texto inferior que aparece (Con tipografía Sans-Serif corregida) -->
-        <div class="mt-6 overflow-hidden py-1">
-            <span class="loader-text block text-slate-400 tracking-[0.3em] uppercase text-[9px] md:text-[10px] font-bold opacity-0">
-                Estudio Jurídico
-            </span>
-        </div>
     </div>
 
 </div>
@@ -49,11 +42,6 @@
         animation: drawLine 1.5s cubic-bezier(0.65, 0, 0.35, 1) 0.8s forwards;
     }
 
-    .loader-text {
-        /* Sube el texto al segundo 1.8 */
-        animation: slideUpText 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards;
-    }
-
     @keyframes scaleXReveal {
         0% { transform: scaleX(0); }
         100% { transform: scaleX(1); }
@@ -63,38 +51,25 @@
         0% { stroke-dashoffset: 100; }
         100% { stroke-dashoffset: 0; }
     }
-
-    @keyframes slideUpText {
-        0% { opacity: 0; transform: translateY(20px); }
-        100% { opacity: 1; transform: translateY(0); }
-    }
 </style>
 
 <script is:inline>
-    // 1. Apenas lee el script (antes de renderizar la web), bloquea el scroll si es la primera visita
-    if (!sessionStorage.getItem('mp_loaded')) {
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-    }
+    // Apenas lee el script, bloquea el scroll SIEMPRE
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
 
     document.addEventListener('astro:page-load', () => {
         const loader = document.getElementById('mp-loader');
-        if (!loader) return;
-
-        // 2. Si ya lo vio en esta sesión, lo borra instantáneamente
-        if (sessionStorage.getItem('mp_loaded')) {
-            loader.style.display = 'none';
+        if (!loader) {
+            // Failsafe por si el loader no existe, liberamos el scroll
             document.documentElement.style.overflow = '';
             document.body.style.overflow = '';
             return;
         }
-
-        // 3. Marca la visita para que no vuelva a salir
-        sessionStorage.setItem('mp_loaded', 'true');
         
-        // 4. Temporizador maestro: 3.5 segundos en total para disfrutar la animación
+        // Temporizador: 2.6 segundos (sin el texto la animación termina antes)
         setTimeout(() => {
-            // Efecto de salida: Se desvanece y hace zoom
+            // Efecto de salida: Se desvanece y hace zoom hacia adelante
             loader.classList.add('opacity-0', 'scale-110', 'pointer-events-none');
             
             // Libera el scroll para que el usuario pueda navegar
@@ -106,6 +81,6 @@
                 loader.remove();
             }, 1000); 
             
-        }, 3500); 
+        }, 2600); 
     });
 </script>
