@@ -1,0 +1,155 @@
+---
+// src/components/Locations.astro
+const offices = [
+  {
+    city: "Ciudad Autónoma de Buenos Aires",
+    district: "Sede Tribunales",
+    address: "Uruguay 654, Piso 7, Oficina 712",
+    detail: "Ubicación estratégica a metros del Palacio de Justicia. Nuestro centro neurálgico para mediaciones y litigios en el fuero nacional.",
+    mapLink: "https://maps.app.goo.gl/rZoy2WeEmNVvKgAp6",
+    embedUrl: "https://maps.google.com/maps?q=Uruguay%20654,%20CABA&t=m&z=15&output=embed&iwloc=near"
+  },
+  {
+    city: "Provincia de Buenos Aires",
+    district: "Sede San Martín",
+    address: "Av. Ricardo Balbín 1777, Piso 4, Oficina 43",
+    detail: "Punto central de gestión y atención presencial para acelerar reclamos y siniestros radicados en Zona Norte y Noroeste del conurbano.",
+    mapLink: "https://maps.app.goo.gl/WFCuAp9LpS5nm1kw5",
+    embedUrl: "https://maps.google.com/maps?q=Av.%20Ricardo%20Balb%C3%ADn%201777,%20San%20Mart%C3%ADn,%20Buenos%20Aires&t=m&z=15&output=embed&iwloc=near"
+  }
+];
+---
+
+<section id="sedes" class="py-24 md:py-32 bg-slate-950 text-white relative overflow-hidden border-t border-slate-900/50">
+    <!-- Luz de fondo sutil -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[500px] bg-slate-800/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        
+        <!-- Cabecera de Sección -->
+        <div class="mb-16 md:mb-24 reveal-locations">
+            <div class="inline-flex items-center space-x-3 mb-6">
+                <span class="w-8 h-[1px] bg-accent"></span>
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-500">Nuestras Oficinas</span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-[1.05] tracking-tighter">
+                Presencia en <br/>
+                <span class="text-slate-400 italic font-light">CABA y Provincia.</span>
+            </h2>
+        </div>
+
+        <!-- Lista Editorial (Layout Zig-Zag) -->
+        <div class="flex flex-col gap-20 md:gap-32">
+            {offices.map((office, index) => (
+                <div class={`flex flex-col gap-8 md:gap-16 lg:gap-24 items-center reveal-locations ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                    
+                    <!-- Bloque del Mapa (50%) -->
+                    <div class="w-full md:w-1/2 relative group">
+                        <!-- Contenedor con ratio panorámico -->
+                        <div class="w-full aspect-[4/3] sm:aspect-video md:aspect-[4/3] bg-slate-900 border border-slate-800 relative overflow-hidden rounded-sm shadow-2xl">
+                            
+                            <!-- Overlay oscuro que se aclara al pasar el mouse -->
+                            <div class="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/10 transition-colors duration-700 z-10 pointer-events-none"></div>
+                            
+                            <!-- IFRAME CON POINTER-EVENTS-NONE: Acá está la magia para que no trabe el scroll -->
+                            <iframe 
+                                src={office.embedUrl}
+                                class="absolute inset-0 w-full h-full border-0 map-dark-mode pointer-events-none scale-105 group-hover:scale-100 transition-transform duration-[1.5s] ease-out"
+                                loading="lazy" 
+                            ></iframe>
+
+                            <!-- Enlace invisible por encima del mapa: Al hacer clic, abre la app -->
+                            <a 
+                                href={office.mapLink} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                class="absolute inset-0 z-20 cursor-pointer"
+                                aria-label={`Abrir mapa de ${office.district}`}
+                            ></a>
+                            
+                            <!-- Cartelito flotante "Abrir Mapa" que aparece al hover -->
+                            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 pointer-events-none">
+                                <span class="bg-white text-slate-950 text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full shadow-xl flex items-center gap-2">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                    Tocar para abrir
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloque de Texto (50%) -->
+                    <div class="w-full md:w-1/2 flex flex-col justify-center">
+                        <div class="mb-4">
+                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-accent border border-accent/20 px-3 py-1 rounded-sm inline-block mb-6">
+                                {office.city}
+                            </span>
+                            <h3 class="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-white mb-4 leading-tight">
+                                {office.district}
+                            </h3>
+                            <p class="text-base md:text-lg text-slate-300 font-serif mb-6 border-l-2 border-slate-700 pl-4">
+                                {office.address}
+                            </p>
+                        </div>
+
+                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed mb-10 max-w-md">
+                            {office.detail}
+                        </p>
+
+                        <div>
+                            <a 
+                                href={office.mapLink} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                class="group/btn inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-slate-100 hover:text-accent transition-colors"
+                            >
+                                <span>Cómo Llegar</span>
+                                <span class="w-8 h-[1px] bg-slate-700 group-hover/btn:bg-accent group-hover/btn:w-12 transition-all duration-300"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            ))}
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* Filtro CSS para oscurecer Google Maps de forma elegante */
+    .map-dark-mode {
+        filter: grayscale(100%) invert(90%) contrast(85%);
+        transition: filter 0.7s ease;
+    }
+    
+    .group:hover .map-dark-mode {
+        filter: grayscale(70%) invert(90%) contrast(95%);
+    }
+
+    /* Animaciones de Scroll */
+    .reveal-locations {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-locations.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-locations').forEach(el => observer.observe(el));
+    });
+</script>
