@@ -1,35 +1,35 @@
 ---
+// src/components/About.astro
 ---
-<section id="estudio" class="py-24 md:py-40 px-6 lg:px-8 bg-slate-950 text-white relative overflow-hidden flex items-center">
+<section id="estudio" class="py-24 md:py-32 px-6 lg:px-8 bg-slate-950 text-white relative overflow-hidden border-t border-slate-900/50">
     
-    <!-- Imagen de fondo cinematográfica -->
-    <div class="absolute inset-0 z-0">
-        <!-- Puse una imagen de un choque urbano abstracto para que conecte más con la temática -->
-        <img 
-            src="https://images.unsplash.com/photo-1620619864205-0210214c7760?q=80&w=2000&auto=format&fit=crop" 
-            alt="Intersección Urbana" 
-            class="w-full h-full object-cover opacity-20 lg:opacity-15 grayscale mix-blend-luminosity animate-slow-zoom"
-        />
-        <!-- Gradiente optimizado -->
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/95 to-slate-950/40 lg:bg-gradient-to-r lg:from-slate-950 lg:via-slate-950/90 lg:to-transparent"></div>
-    </div>
+    <!-- Marca de agua de fondo gigante (Segura)
+    <div class="absolute top-1/2 right-0 text-[15rem] lg:text-[25rem] font-serif font-bold text-slate-900/40 select-none pointer-events-none leading-none z-0 -translate-y-1/2 translate-x-1/4">
+        MP
+    </div> -->
 
-    <div class="max-w-7xl mx-auto relative z-10 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <!-- Destello de luz sutil -->
+    <div class="absolute bottom-0 left-0 w-full h-[500px] bg-accent/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        
+        <!-- LAYOUT DE COLUMNAS (Súper estable) -->
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
             
-            <!-- Columna de Texto Principal -->
-            <div class="lg:col-span-7 flex flex-col items-start reveal-about">
-                <div class="inline-flex items-center space-x-3 mb-8 md:mb-12">
-                    <span class="w-8 h-[1px] bg-slate-500"></span>
+            <!-- COLUMNA IZQUIERDA: Textos y Título -->
+            <div class="w-full lg:w-5/12 flex flex-col justify-center reveal-about z-20">
+                
+                <div class="inline-flex items-center space-x-3 mb-6">
+                    <span class="w-8 h-[1px] bg-accent"></span>
                     <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">Filosofía de la Firma</span>
                 </div>
                 
-                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-10 font-serif leading-[1.05] tracking-tighter">
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-[1.05] tracking-tighter mb-8">
                     No negociamos <br/>
                     <span class="text-slate-400 font-light italic">con su futuro.</span>
                 </h2>
                 
-                <div class="space-y-6 max-w-xl">
+                <div class="space-y-6">
                     <p class="text-sm md:text-base text-slate-300 font-light leading-relaxed">
                         Las aseguradoras tienen un solo objetivo: pagarle lo menos posible tras un choque. Conocemos sus tácticas dilatorias y las neutralizamos con peritajes impecables y litigio agresivo.
                     </p>
@@ -38,67 +38,71 @@
                     </p>
                 </div>
 
-                <!-- Sello de Autoridad / Firma -->
-                <div class="pt-8 md:pt-12 mt-8 md:mt-12 border-t border-slate-800/50 w-full max-w-md">
-                    <!-- <div class="font-serif text-3xl md:text-4xl text-white font-bold tracking-widest mb-1 md:mb-2">
-                        MP
-                    </div> -->
-                    <div class="text-[9px] md:text-[10px] tracking-[0.3em] text-slate-500 uppercase font-bold">
-                        Especialistas en Daños
+                <!-- Métricas Mobile (Solo visibles en celular) -->
+                <div class="flex lg:hidden grid-cols-2 gap-6 border-t border-slate-800 pt-8 mt-10">
+                    <div class="w-1/2">
+                        <div class="text-4xl sm:text-5xl font-bold text-white mb-1 font-serif tracking-tighter">+5k</div>
+                        <div class="text-[9px] text-slate-400 uppercase tracking-[0.2em] font-bold">Casos Resueltos</div>
+                    </div>
+                    <div class="w-1/2">
+                        <div class="text-4xl sm:text-5xl font-bold text-white mb-1 font-serif tracking-tighter">24/7</div>
+                        <div class="text-[9px] text-slate-400 uppercase tracking-[0.2em] font-bold">Atención Inmediata</div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Columna de Cifras - Diseño Adaptativo -->
-            <div class="lg:col-span-5 relative mt-6 lg:mt-0 reveal-about" style="transition-delay: 200ms;">
+
+            <!-- COLUMNA DERECHA: Imagen y Tarjeta Flotante -->
+            <div class="w-full lg:w-7/12 relative reveal-about" style="transition-delay: 200ms;">
                 
-                <!-- Línea decorativa vertical (solo visible en desktop) -->
-                <div class="hidden lg:block absolute -left-8 top-10 bottom-10 w-[1px] bg-gradient-to-b from-transparent via-slate-700 to-transparent"></div>
-
-                <!-- Grid Horizontal en Mobile / Flex vertical en Desktop -->
-                <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:flex lg:flex-col lg:gap-20 pl-0 lg:pl-12">
+                <!-- Contenedor de la Imagen (Mantiene tu aspecto vertical) -->
+                <div class="w-full aspect-[4/5] lg:aspect-[3/4] bg-slate-900 border border-slate-800 relative group overflow-hidden shadow-2xl rounded-sm z-10">
                     
-                    <!-- Métrica 1 -->
-                    <div class="relative group bg-slate-900/60 lg:bg-transparent border border-slate-800 lg:border-transparent p-5 lg:p-0 rounded-sm backdrop-blur-sm lg:backdrop-blur-none transition-colors duration-500 hover:bg-slate-800/80 lg:hover:bg-transparent">
-                        <div class="text-3xl sm:text-5xl md:text-8xl lg:text-9xl font-bold text-white lg:text-transparent desktop-text-stroke mb-2 font-serif tracking-tighter group-hover:text-white transition-colors duration-700">
-                            +5k
-                        </div>
-                        <div class="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4">
-                            <span class="hidden lg:block w-8 h-[1px] bg-slate-600 group-hover:w-12 group-hover:bg-white transition-all duration-500"></span>
-                            <span class="text-[9px] md:text-sm text-slate-400 uppercase tracking-[0.2em] font-bold group-hover:text-slate-200 transition-colors duration-500 leading-tight">
-                                Casos <br class="lg:hidden"/>Resueltos
-                            </span>
-                        </div>
-                    </div>
+                    <img 
+                        src="/maximo.jpeg" 
+                        alt="Director del Estudio MP Abogados" 
+                        class="w-full h-full object-cover object-[center_20%] grayscale-[15%] group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-[1.5s] ease-out"
+                        onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop'"
+                    />
                     
-                    <!-- Métrica 2 -->
-                    <div class="relative group bg-slate-900/60 lg:bg-transparent border border-slate-800 lg:border-transparent p-5 lg:p-0 rounded-sm backdrop-blur-sm lg:backdrop-blur-none transition-colors duration-500 hover:bg-slate-800/80 lg:hover:bg-transparent">
-                        <div class="text-3xl sm:text-5xl md:text-8xl lg:text-9xl font-bold text-white lg:text-transparent desktop-text-stroke mb-2 font-serif tracking-tighter group-hover:text-white transition-colors duration-700">
-                            24/7
-                        </div>
-                        <div class="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4">
-                            <span class="hidden lg:block w-8 h-[1px] bg-slate-600 group-hover:w-12 group-hover:bg-white transition-all duration-500"></span>
-                            <span class="text-[9px] md:text-sm text-slate-400 uppercase tracking-[0.2em] font-bold group-hover:text-slate-200 transition-colors duration-500 leading-tight">
-                                Atención <br class="lg:hidden"/>Inmediata
-                            </span>
-                        </div>
+                    <div class="absolute inset-0 bg-slate-950/10 group-hover:bg-slate-950/0 transition-colors duration-1000"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none"></div>
+                    
+                    <div class="absolute top-8 right-6 vertical-text flex items-center gap-4 opacity-70 group-hover:opacity-100 transition-opacity duration-700">
+                        <span class="w-[1px] h-12 bg-accent"></span>
+                        <span class="text-[9px] font-bold uppercase tracking-[0.3em] text-white">Dirección Legal</span>
                     </div>
-
                 </div>
+
+                <!-- Tarjeta Flotante (Solo Desktop) - Rompe la grilla de forma elegante y segura -->
+                <div class="hidden lg:flex absolute bottom-12 -left-12 xl:-left-24 z-30 bg-slate-900/85 backdrop-blur-xl border border-slate-700 shadow-2xl p-8 items-center gap-10 rounded-sm">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent to-transparent"></div>
+                    
+                    <div>
+                        <div class="text-4xl xl:text-5xl font-bold text-white mb-1 font-serif tracking-tighter">+5k</div>
+                        <div class="text-[9px] text-slate-400 uppercase tracking-[0.2em] font-bold">Casos Resueltos</div>
+                    </div>
+                    
+                    <!-- Divisor vertical -->
+                    <div class="w-[1px] h-16 bg-slate-700"></div>
+                    
+                    <div>
+                        <div class="text-4xl xl:text-5xl font-bold text-white mb-1 font-serif tracking-tighter">24/7</div>
+                        <div class="text-[9px] text-slate-400 uppercase tracking-[0.2em] font-bold">Atención Inmediata</div>
+                    </div>
+                </div>
+                
             </div>
-            
+
         </div>
     </div>
 </section>
 
 <style>
-    /* El efecto hueco se aplica SOLO en pantallas de escritorio */
-    @media (min-width: 1024px) {
-        .desktop-text-stroke {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
-        }
+    .vertical-text {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
     }
-    
+
     .reveal-about {
         opacity: 0;
         transform: translateY(40px);
@@ -112,12 +116,7 @@
 
 <script>
     document.addEventListener('astro:page-load', () => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
