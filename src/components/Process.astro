@@ -1,0 +1,159 @@
+---
+// src/components/Process.astro
+---
+<section id="metodologia" class="py-24 md:py-32 px-6 lg:px-8 bg-slate-950 text-white relative overflow-hidden">
+    <!-- Destello de fondo sutil -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[40rem] h-[30rem] bg-accent/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        
+        <!-- HEADER DE SECCIÓN -->
+        <div class="text-center mb-16 md:mb-20 reveal-process">
+            <div class="inline-flex items-center space-x-3 mb-6">
+                <span class="w-8 h-[1px] bg-accent"></span>
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">Metodología de Trabajo</span>
+                <span class="w-8 h-[1px] bg-accent"></span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-[1.05] tracking-tighter mb-6">
+                Del inicio al <span class="text-slate-400 italic font-light">cobro.</span>
+            </h2>
+            <p class="text-slate-400 font-light text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+                Un proceso transparente y efectivo. Diseñado para que usted solo se enfoque en su recuperación mientras nosotros blindamos sus derechos.
+            </p>
+        </div>
+
+        <!-- GRID EDITORIAL: PASO A PASO -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-32">
+            
+            <!-- Paso 01 -->
+            <div class="relative bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 p-8 md:p-10 rounded-sm overflow-hidden group hover:bg-slate-900/80 hover:border-slate-700 transition-all duration-500 reveal-process">
+                <span class="absolute -top-8 -right-4 text-[10rem] font-serif font-bold text-slate-800/30 group-hover:text-slate-700/30 transition-colors duration-500 pointer-events-none select-none leading-none">01</span>
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-4 relative z-10 flex items-center gap-4">
+                    <span class="w-8 h-[1px] bg-accent"></span>
+                    Consulta Inicial
+                </h3>
+                <p class="text-slate-400 font-light leading-relaxed relative z-10 text-sm md:text-base">
+                    Nos contactás y analizamos tu caso. Te explicamos cómo podemos ayudarte y, lo más importante, <strong class="text-slate-200 font-medium">sin cobrarte en ningún momento ningún tipo de adelanto.</strong>
+                </p>
+            </div>
+
+            <!-- Paso 02 -->
+            <div class="relative bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 p-8 md:p-10 rounded-sm overflow-hidden group hover:bg-slate-900/80 hover:border-slate-700 transition-all duration-500 reveal-process" style="transition-delay: 100ms;">
+                <span class="absolute -top-8 -right-4 text-[10rem] font-serif font-bold text-slate-800/30 group-hover:text-slate-700/30 transition-colors duration-500 pointer-events-none select-none leading-none">02</span>
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-4 relative z-10 flex items-center gap-4">
+                    <span class="w-8 h-[1px] bg-accent"></span>
+                    Preparación
+                </h3>
+                <p class="text-slate-400 font-light leading-relaxed relative z-10 text-sm md:text-base">
+                    Te pedimos la documentación necesaria (fotos, denuncia, certificados médicos). Preparamos un caso con solidez legal para evitar demoras por parte de la aseguradora.
+                </p>
+            </div>
+
+            <!-- Paso 03 -->
+            <div class="relative bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 p-8 md:p-10 rounded-sm overflow-hidden group hover:bg-slate-900/80 hover:border-slate-700 transition-all duration-500 reveal-process" style="transition-delay: 200ms;">
+                <span class="absolute -top-8 -right-4 text-[10rem] font-serif font-bold text-slate-800/30 group-hover:text-slate-700/30 transition-colors duration-500 pointer-events-none select-none leading-none">03</span>
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-4 relative z-10 flex items-center gap-4">
+                    <span class="w-8 h-[1px] bg-accent"></span>
+                    Negociación
+                </h3>
+                <p class="text-slate-400 font-light leading-relaxed relative z-10 text-sm md:text-base">
+                    Presentamos el reclamo y negociamos vía mediación con la aseguradora para defender tus intereses y conseguir la compensación que realmente te corresponde.
+                </p>
+            </div>
+
+            <!-- Paso 04 (Destacado) -->
+            <div class="relative bg-slate-800/30 backdrop-blur-sm border border-accent/30 p-8 md:p-10 rounded-sm overflow-hidden group hover:bg-slate-800/60 hover:border-accent/60 transition-all duration-500 reveal-process shadow-[0_0_30px_rgba(37,99,235,0.05)]" style="transition-delay: 300ms;">
+                <span class="absolute -top-8 -right-4 text-[10rem] font-serif font-bold text-accent/10 group-hover:text-accent/20 transition-colors duration-500 pointer-events-none select-none leading-none">04</span>
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-4 relative z-10 flex items-center gap-4">
+                    <span class="w-8 h-[2px] bg-accent"></span>
+                    Cobro Exitoso
+                </h3>
+                <p class="text-slate-300 font-light leading-relaxed relative z-10 text-sm md:text-base">
+                    Te explicamos cada propuesta y vos decidís si la aceptás. <strong class="text-white font-medium">No nos debés nada hasta que vos cobres.</strong> Recién ahí se abonan nuestros honorarios.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- SECCIÓN: DAÑOS RECLAMABLES -->
+        <div class="max-w-6xl mx-auto border-t border-slate-900 pt-24">
+            
+            <div class="text-center mb-16 reveal-process">
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-white tracking-tight">
+                    ¿Qué daños reclamamos?
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 reveal-process" style="transition-delay: 200ms;">
+                
+                <!-- Tarjeta Daños Materiales -->
+                <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-8 md:p-12 rounded-sm relative">
+                    <div class="w-12 h-12 bg-slate-800/50 rounded-full flex items-center justify-center mb-8">
+                        <svg class="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h4 class="text-2xl font-serif font-bold text-white mb-4">Daños Materiales</h4>
+                    <p class="text-slate-400 font-light text-sm md:text-base leading-relaxed mb-8">
+                        Reclamamos todos los daños que sean consecuencia del accidente, sean de tu auto, moto, bicicleta o monopatín.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 text-sm md:text-base text-slate-300 font-light">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span> 
+                            Reparación integral del vehículo
+                        </li>
+                        <li class="flex items-start gap-4 text-sm md:text-base text-slate-300 font-light">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span> 
+                            Daños en accesorios electrónicos (celular, computadora)
+                        </li>
+                        <li class="flex items-start gap-4 text-sm md:text-base text-slate-300 font-light">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span> 
+                            Daños en accesorios de seguridad (casco, indumentaria)
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta Lesiones Físicas -->
+                <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-8 md:p-12 rounded-sm relative overflow-hidden">
+                    <div class="absolute inset-0 bg-accent/5 pointer-events-none"></div>
+                    <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mb-8 relative z-10">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <h4 class="text-2xl font-serif font-bold text-white mb-4 relative z-10">Lesiones Físicas</h4>
+                    <p class="text-slate-300 font-light text-sm md:text-base leading-relaxed relative z-10 mb-6">
+                        Lo más importante sos vos. Cualquier golpe, raspón o corte es reclamable.
+                    </p>
+                    <div class="bg-slate-950/80 border-l-2 border-accent p-5 rounded-r-sm relative z-10">
+                        <p class="text-sm md:text-base text-slate-300 font-medium">
+                            Aunque la lesión parezca leve, consultanos para evaluar si corresponde reclamar una indemnización.
+                        </p>
+                    </div>
+                    <p class="text-slate-400 font-light text-sm md:text-base leading-relaxed relative z-10 mt-6">
+                        Contamos con un equipo de médicos legistas para lograr el mejor resultado económico y de salud para vos.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .reveal-process { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal-process.is-visible { opacity: 1; transform: translateY(0); }
+</style>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-process').forEach(el => observer.observe(el));
+    });
+</script>

@@ -2,24 +2,24 @@
 // src/components/FAQ.astro
 const faqs = [
   {
-    question: "¿Debo abonar gastos o consultas por adelantado?",
-    answer: "Absolutamente no. Nuestro estudio asume el 100% de los gastos operativos y periciales. Trabajamos bajo el sistema de cuota litis: nuestros honorarios se cobran únicamente cuando logramos que usted perciba su indemnización."
+    question: "¿Tengo que pagar para empezar?",
+    answer: "No pedimos adelantos de honorarios. Antes de comenzar, te explicamos cómo trabajamos y cómo se calculan nuestros honorarios, que se abonan únicamente cuando cobrás."
   },
   {
-    question: "¿Qué hago si la aseguradora me ofrece un acuerdo rápido?",
-    answer: "No firme nada. Los ofrecimientos prematuros son tácticas estándar para liquidar el siniestro por una fracción de su valor real. Derívenos cualquier comunicación; nosotros nos encargamos de exigir la compensación completa que marca la ley."
+    question: "¿Puedo consultar si todavía no tengo toda la documentación?",
+    answer: "Sí. Podemos orientarte desde el primer contacto y ayudarte a organizar lo que necesitás. No hace falta que tengas todo resuelto para escribirnos."
   },
   {
-    question: "¿Cuáles son los plazos reales para percibir la indemnización?",
-    answer: "Depende de la gravedad del caso y la postura de la aseguradora. Nuestro objetivo es forzar un acuerdo extrajudicial contundente entre 3 y 6 meses. Si la compañía dilata el proceso o la oferta es baja, judicializamos el reclamo de inmediato."
+    question: "¿Tengo que aceptar la oferta de la aseguradora?",
+    answer: "La decisión siempre es tuya. Te explicamos el ofrecimiento en detalle y te asesoramos para que puedas decidir con información clara y precisa."
   },
   {
-    question: "El siniestro ocurrió mientras trabajaba (in itinere). ¿A quién reclamo?",
-    answer: "Le corresponde reclamar tanto al seguro del vehículo responsable (vía civil) como a su propia ART. Nuestro equipo unifica y gestiona ambos reclamos en paralelo para blindar su patrimonio y maximizar el resarcimiento final."
+    question: "¿Cuánto puede tardar el reclamo?",
+    answer: "Los tiempos dependen de las características del caso y de la respuesta de la aseguradora. Te mantenemos informado sobre los avances en cada etapa."
   },
   {
-    question: "¿Qué documentación es indispensable para iniciar la gestión?",
-    answer: "Para la evaluación preliminar requerimos: relato de los hechos, fotografías de los daños, certificado de atención médica (si existen lesiones) y los datos del tercero involucrado. Si no cuenta con todo, contáctenos y lo guiaremos para obtenerlo."
+    question: "¿Atienden casos de todo el país?",
+    answer: "Sí, trabajamos con casos de toda la Argentina. Consultanos cómo podemos acompañarte según dónde ocurrió el accidente."
   }
 ];
 ---
@@ -28,7 +28,6 @@ const faqs = [
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
             
-            <!-- Columna Izquierda: Título (Sticky en Desktop) -->
             <div class="w-full lg:w-5/12 reveal-faq">
                 <div class="lg:sticky lg:top-32">
                     <div class="inline-flex items-center space-x-3 mb-6">
@@ -40,68 +39,44 @@ const faqs = [
                         <span class="text-slate-400 italic font-light">frecuentes.</span>
                     </h2>
                     <p class="text-slate-500 font-light text-sm md:text-base leading-relaxed mb-10 max-w-md">
-                        Sabemos que un siniestro vial genera muchísima incertidumbre. Resolvemos sus dudas principales con total transparencia antes de que tome una decisión.
+                        Sabemos que un siniestro vial genera muchísima incertidumbre. Resolvemos tus dudas principales con total transparencia antes de que tomes una decisión.
                     </p>
-                    
-                    <a href="#contacto" class="group inline-flex items-center gap-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-900 hover:text-accent transition-colors">
-                        <span>Hacer otra consulta</span>
-                        <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
                 </div>
             </div>
 
-            <!-- Columna Derecha: Acordeón Interactivos -->
             <div class="w-full lg:w-7/12 reveal-faq" style="transition-delay: 150ms;">
                 <div class="border-t border-slate-200">
                     {faqs.map((faq) => (
                         <div class="faq-item group border-b border-slate-200 overflow-hidden">
-                            
-                            <!-- Botón del acordeón -->
                             <button class="faq-button w-full flex items-center justify-between py-6 md:py-8 text-left focus:outline-none">
-                                
-                                <!-- TIPOGRAFÍA CORREGIDA: Vuelve el font-bold para darle fuerza a la pregunta -->
                                 <h3 class="text-lg md:text-xl font-bold text-slate-900 transition-colors duration-300 pr-8 group-hover:text-accent group-[.active]:text-accent leading-snug">
                                     {faq.question}
                                 </h3>
-                                
-                                <!-- Icono Animado (+ a -) -->
                                 <div class="relative w-6 h-6 shrink-0 flex items-center justify-center">
                                     <span class="absolute w-full h-0.5 bg-slate-400 transition-colors duration-300 group-hover:bg-accent group-[.active]:bg-accent"></span>
                                     <span class="absolute w-full h-0.5 bg-slate-400 transition-all duration-500 transform rotate-90 group-hover:bg-accent group-[.active]:bg-accent group-[.active]:rotate-0"></span>
                                 </div>
                             </button>
-                            
-                            <!-- Contenido Desplegable -->
                             <div class="faq-content h-0 opacity-0 transition-all duration-500 ease-in-out">
                                 <p class="text-slate-500 font-light text-sm md:text-base leading-relaxed pb-8 md:pb-10 pr-4 md:pr-12">
                                     {faq.answer}
                                 </p>
                             </div>
-                            
                         </div>
                     ))}
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 <style>
-    .reveal-faq {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-faq.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    .reveal-faq { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal-faq.is-visible { opacity: 1; transform: translateY(0); }
 </style>
 
 <script>
     document.addEventListener('astro:page-load', () => {
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -109,32 +84,24 @@ const faqs = [
                     obs.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.15 });
 
         document.querySelectorAll('.reveal-faq').forEach(el => observer.observe(el));
 
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
+        document.querySelectorAll('.faq-item').forEach(item => {
             const button = item.querySelector('.faq-button');
             const content = item.querySelector('.faq-content') as HTMLElement;
-            
             if (!button || !content) return;
 
             button.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                        const otherContent = otherItem.querySelector('.faq-content') as HTMLElement;
-                        if (otherContent) {
-                            otherContent.style.height = '0px';
-                            otherContent.style.opacity = '0';
-                        }
+                document.querySelectorAll('.faq-item').forEach(other => {
+                    if (other !== item) {
+                        other.classList.remove('active');
+                        const otherContent = other.querySelector('.faq-content') as HTMLElement;
+                        if (otherContent) { otherContent.style.height = '0px'; otherContent.style.opacity = '0'; }
                     }
                 });
-
                 if (!isActive) {
                     item.classList.add('active');
                     content.style.height = content.scrollHeight + 'px';
