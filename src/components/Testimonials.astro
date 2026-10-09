@@ -1,0 +1,80 @@
+---
+// src/components/Testimonials.astro
+
+// Asegurate de que los nombres y extensiones coincidan con los archivos que subas a la carpeta /public
+const screenshots = [
+  { src: "/captura-1.png", alt: "Testimonio de cliente - Patricia" },
+  { src: "/captura-2.png", alt: "Testimonio de cliente - Dai" },
+  { src: "/captura-3.png", alt: "Testimonio de cliente - Juan Canteros" },
+  { src: "/captura-4.png", alt: "Testimonio de cliente - Sol Migueles" }
+];
+---
+<section class="py-24 md:py-32 px-6 lg:px-8 bg-slate-50 text-slate-950 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Encabezado de la sección -->
+        <div class="text-center mb-16 md:mb-20 reveal-test">
+            <div class="inline-flex items-center justify-center space-x-3 mb-6">
+                <span class="w-12 h-[1px] bg-accent"></span>
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-500">Testimonios Reales</span>
+                <span class="w-12 h-[1px] bg-accent"></span>
+            </div>
+            
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif tracking-tighter leading-[1.05] mb-6">
+                La experiencia de <br class="hidden sm:block"/>
+                <span class="text-slate-400 italic font-light">nuestros clientes.</span>
+            </h2>
+            
+            <p class="text-slate-500 font-medium text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+                Conocé las opiniones de quienes nos confiaron su reclamo.
+            </p>
+        </div>
+
+        <!-- Galería de Capturas de WhatsApp -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {screenshots.map((shot, i) => (
+                <div class="reveal-test relative group rounded-2xl overflow-hidden shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.15)] border border-slate-200 bg-white transition-shadow duration-500" style={`transition-delay: ${i * 100}ms;`}>
+                    
+                    <!-- Capa de brillo sutil al pasar el mouse (Efecto Premium) -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none"></div>
+                    
+                    <!-- Imagen de la captura -->
+                    <img 
+                        src={shot.src} 
+                        alt={shot.alt} 
+                        class="w-full h-auto object-cover transform group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                        loading="lazy"
+                    />
+                </div>
+            ))}
+        </div>
+        
+    </div>
+</section>
+
+<style>
+    .reveal-test { 
+        opacity: 0; 
+        transform: translateY(40px); 
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+    }
+    .reveal-test.is-visible { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+</style>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { 
+                    entry.target.classList.add('is-visible'); 
+                    obs.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.15 });
+        
+        document.querySelectorAll('.reveal-test').forEach(el => observer.observe(el));
+    });
+</script>

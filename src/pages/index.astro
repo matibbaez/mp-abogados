@@ -6,6 +6,8 @@ import Services from '../components/Services.astro';
 import About from '../components/About.astro';
 import Media from '../components/Media.astro';
 import Process from '../components/Process.astro';
+import Results from '../components/Results.astro';
+import Testimonials from '../components/Testimonials.astro';
 import Location from '../components/Location.astro';
 import FAQ from '../components/FAQ.astro';
 
@@ -17,27 +19,35 @@ const whatsappUrl = "https://wa.me/5491168809555";
         <!-- 1. Presentación -->
         <Hero />
 
+        <!-- CTA 1: Solicitado por el estudio debajo de la presentación -->
+        <CtaBlock />
+
         <!-- 2. Situaciones Cotidianas -->
         <Services />
         
         <!-- 3. Trato y Seguimiento (Empatía) -->
         <About />
         
+        <!-- Media (Apariciones/Prensa) -->
         <Media />
         
         <!-- 4. Metodología y Daños -->
         <Process />
 
-        <!-- CTA 2: Solicitado por el estudio después del paso a paso -->
+        <!-- 5. La Prueba Irrefutable (Resultados objetivos + Prueba social) -->
+        <Results />
+        <!-- <Testimonials /> -->
+
+        <!-- CTA 2: Solicitado por el estudio después del paso a paso / testimonios -->
         <CtaBlock />
         
-        <!-- 5. Oficinas -->
+        <!-- 6. Oficinas -->
         <Location />
         
-        <!-- 6. Preguntas Frecuentes -->
+        <!-- 7. Preguntas Frecuentes -->
         <FAQ />
         
-        <!-- 7. Sección de Contacto Editorial (Integrada) -->
+        <!-- 8. Sección de Contacto Editorial (Integrada) -->
         <section id="contacto" class="py-24 md:py-40 px-6 lg:px-8 bg-slate-50 text-slate-950 relative overflow-hidden">
             <div class="max-w-7xl mx-auto relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
@@ -87,7 +97,6 @@ const whatsappUrl = "https://wa.me/5491168809555";
                                 <div class="flex-1 min-w-0">
                                     <div class="text-[10px] tracking-[0.2em] text-slate-500 uppercase font-bold mb-2">Recepción de Causas</div>
                                     <button type="button" id="copy-email-btn" class="group/copy relative flex items-center gap-3 text-left focus:outline-none w-full">
-                                        <!-- Aplicamos un tamaño de fuente que escale bien y forzamos el break solo si es ultra necesario -->
                                         <span class="text-[15px] sm:text-xl md:text-3xl font-serif font-bold tracking-tight text-slate-950 transition-colors group-hover/copy:text-accent shrink break-all sm:break-normal">contacto@myp-abogados.com.ar</span>
                                         
                                         <!-- Ícono de Copiar -->

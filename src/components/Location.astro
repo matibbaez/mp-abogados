@@ -1,5 +1,5 @@
 ---
-// src/components/Locations.astro
+// src/components/Location.astro
 const offices = [
   {
     city: "Ciudad Autónoma de Buenos Aires",
@@ -20,7 +20,7 @@ const offices = [
 ];
 ---
 
-<section id="sedes" class="py-24 md:py-32 bg-slate-950 text-white relative overflow-hidden border-t border-slate-900/50">
+<section id="oficinas" class="py-24 md:py-32 bg-slate-950 text-white relative overflow-hidden border-t border-slate-900/50">
     <!-- Luz de fondo sutil -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[500px] bg-slate-800/10 blur-[120px] rounded-full pointer-events-none"></div>
 
@@ -30,12 +30,19 @@ const offices = [
         <div class="mb-16 md:mb-24 reveal-locations">
             <div class="inline-flex items-center space-x-3 mb-6">
                 <span class="w-8 h-[1px] bg-accent"></span>
-                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-500">Nuestras Oficinas</span>
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-500">Dónde Encontrarnos</span>
             </div>
+            
+            <!-- Título actualizado según feedback -->
             <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-[1.05] tracking-tighter">
-                Presencia en <br/>
-                <span class="text-slate-400 italic font-light">CABA y Provincia.</span>
+                Nuestras <br/>
+                <span class="text-slate-400 italic font-light">oficinas.</span>
             </h2>
+            
+            <!-- Frase agregada según feedback -->
+            <p class="mt-6 text-slate-300 font-medium text-sm md:text-base leading-relaxed max-w-2xl">
+                Asesoramiento y representación en todo el país.
+            </p>
         </div>
 
         <!-- Lista Editorial (Layout Zig-Zag) -->
