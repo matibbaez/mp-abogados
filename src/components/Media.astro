@@ -50,7 +50,10 @@ const reels = [
   }
 ];
 ---
-<section id="media" class="py-24 md:py-32 bg-slate-50 text-slate-950 relative overflow-hidden">
+<section id="media" class="py-24 md:py-32 bg-slate-900 text-white relative overflow-hidden border-y border-slate-800">
+    <!-- Destello de fondo sutil para dar profundidad espacial -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
     <div class="max-w-7xl mx-auto relative z-10 px-0 lg:px-8">
         
         <!-- Cabecera de Sección -->
@@ -58,45 +61,44 @@ const reels = [
             <div class="max-w-2xl">
                 <div class="inline-flex items-center space-x-3 mb-6 md:mb-8">
                     <span class="w-8 h-[1px] bg-accent"></span>
-                    <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-500">Divulgación Legal</span>
+                    <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-400">Divulgación Legal</span>
                 </div>
-                <!-- TEXTO ACTUALIZADO AQUÍ -->
-                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-[1.05] tracking-tighter">
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold font-serif leading-[1.05] tracking-tighter text-white">
                     Conocimiento que <br/>
                     <span class="text-slate-400 italic font-light">protege tus derechos.</span>
                 </h2>
             </div>
             <div class="pb-2">
-                <a href="https://instagram.com/abogados.transitomp" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-950 hover:text-accent transition-colors">
+                <a href="https://instagram.com/abogados.transitomp" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-300 hover:text-white transition-colors">
                     <span>Ver Archivo en Instagram</span>
                     <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
             </div>
         </div>
 
-        <!-- VERSIÓN DESKTOP: Grilla Fija (3x2) - Bordes Finos -->
+        <!-- VERSIÓN DESKTOP: Grilla Fija (3x2) - Adaptado a Dark Mode -->
         <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {reels.map((reel, index) => (
                 <button 
                     data-modal-trigger={reel.id}
-                    class="w-full max-w-[340px] aspect-[9/16] relative group block overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900 shadow-lg hover:shadow-2xl text-left transition-all duration-700 focus:outline-none reveal-media" 
+                    class="w-full max-w-[340px] aspect-[9/16] relative group block overflow-hidden rounded-[2rem] border border-slate-700 bg-slate-950 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(37,99,235,0.15)] hover:border-slate-600 text-left transition-all duration-700 focus:outline-none reveal-media" 
                     style={`transition-delay: ${index * 100}ms;`}
                 >
-                    <div class="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20 pointer-events-none mix-blend-overlay"></div>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20 pointer-events-none mix-blend-overlay"></div>
 
                     <div class="absolute inset-0 z-0 bg-slate-950 overflow-hidden rounded-[2rem]">
                         <img 
                             src={reel.image} 
                             alt={reel.title} 
-                            class="w-full h-full object-cover grayscale-[15%] brightness-90 group-hover:grayscale-0 group-hover:brightness-100 scale-100 group-hover:scale-105 transition-all duration-[1.5s] ease-out pointer-events-none"
+                            class="w-full h-full object-cover grayscale-[20%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 scale-100 group-hover:scale-105 transition-all duration-[1.5s] ease-out pointer-events-none"
                             onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop'"
                         />
-                        <div class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/30 transition-colors duration-500 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors duration-500 pointer-events-none"></div>
                     </div>
 
                     <!-- Botón de Play Central -->
                     <div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-                        <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-500 shadow-2xl">
+                        <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-500 shadow-2xl">
                             <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                     </div>
@@ -104,27 +106,27 @@ const reels = [
             ))}
         </div>
 
-        <!-- VERSIÓN MOBILE: Carrusel Táctil (Swipe) - Bordes Finos -->
+        <!-- VERSIÓN MOBILE: Carrusel Táctil (Swipe) - Adaptado a Dark Mode -->
         <div class="md:hidden w-full relative">
             <div class="flex overflow-x-auto gap-4 snap-x snap-mandatory hide-scrollbar px-6 pb-8 pt-2">
                 {reels.map((reel, index) => (
                     <button 
                         data-modal-trigger={reel.id}
-                        class="snap-center shrink-0 w-[78vw] sm:w-[280px] aspect-[9/16] relative block overflow-hidden rounded-[2rem] bg-slate-900 shadow-lg border border-slate-800 focus:outline-none reveal-media" 
+                        class="snap-center shrink-0 w-[78vw] sm:w-[280px] aspect-[9/16] relative block overflow-hidden rounded-[2rem] bg-slate-950 shadow-lg border border-slate-800 focus:outline-none reveal-media" 
                         style={`transition-delay: ${index * 100}ms;`}
                     >
                         <div class="absolute inset-0 z-0 bg-slate-950 overflow-hidden rounded-[2rem]">
                             <img 
                                 src={reel.image} 
                                 alt={reel.title} 
-                                class="w-full h-full object-cover grayscale-[10%] brightness-90 pointer-events-none"
+                                class="w-full h-full object-cover grayscale-[15%] brightness-75 pointer-events-none"
                                 onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop'"
                             />
-                            <div class="absolute inset-0 bg-slate-950/10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-slate-950/30 pointer-events-none"></div>
                         </div>
 
                         <div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-                            <div class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-lg">
+                            <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
                                 <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                         </div>
@@ -133,28 +135,28 @@ const reels = [
                 <div class="shrink-0 w-2"></div>
             </div>
             
-            <div class="flex justify-center items-center gap-2 pb-4 text-slate-400 mt-2">
-                <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                <span class="text-[9px] font-bold uppercase tracking-[0.2em]">Deslizá para ver más</span>
+            <div class="flex justify-center items-center gap-2 pb-4 text-slate-500 mt-2">
+                <svg class="w-4 h-4 animate-pulse text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400">Deslizá para ver más</span>
             </div>
         </div>
     </div>
 
-    <!-- Generación de los Modales -->
+    <!-- Generación de los Modales - Invertidos a Dark Mode -->
     {reels.map((reel) => (
         <div id={`modal-${reel.id}`} class="fixed inset-0 z-[100] hidden items-center justify-center px-4 md:px-0">
             
-            <div class="modal-backdrop absolute inset-0 bg-slate-950/90 backdrop-blur-md opacity-0 transition-opacity duration-500 cursor-pointer"></div>
+            <div class="modal-backdrop absolute inset-0 bg-slate-950/95 backdrop-blur-md opacity-0 transition-opacity duration-500 cursor-pointer"></div>
             
-            <div class="modal-content relative bg-white w-full max-w-4xl rounded-[2rem] shadow-2xl flex flex-col md:flex-row overflow-hidden opacity-0 scale-95 translate-y-4 transition-all duration-500 max-h-[90dvh]">
+            <div class="modal-content relative bg-slate-950 border border-slate-800 w-full max-w-4xl rounded-[2rem] shadow-2xl flex flex-col md:flex-row overflow-hidden opacity-0 scale-95 translate-y-4 transition-all duration-500 max-h-[90dvh]">
                 
-                <button class="modal-close absolute top-4 right-4 md:top-6 md:right-6 z-20 w-10 h-10 bg-white/80 backdrop-blur-md border border-slate-200 rounded-full flex items-center justify-center text-slate-600 hover:text-accent hover:border-accent transition-colors shadow-sm focus:outline-none">
+                <button class="modal-close absolute top-4 right-4 md:top-6 md:right-6 z-20 w-10 h-10 bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-500 hover:bg-slate-800 transition-colors shadow-sm focus:outline-none">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
 
-                <div class="md:w-5/12 relative h-[40vh] md:h-auto bg-slate-900 overflow-hidden">
-                    <img src={reel.image} alt={reel.title} class="w-full h-full object-cover grayscale-[10%]" onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop'" />
-                    <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center group/play cursor-pointer pointer-events-none">
+                <div class="md:w-5/12 relative h-[40vh] md:h-auto bg-slate-900 overflow-hidden border-r border-slate-800">
+                    <img src={reel.image} alt={reel.title} class="w-full h-full object-cover grayscale-[10%] brightness-90" onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop'" />
+                    <div class="absolute inset-0 bg-slate-950/40 flex items-center justify-center group/play cursor-pointer pointer-events-none">
                         <div class="w-20 h-20 rounded-full bg-accent/90 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-2xl group-hover/play:scale-110 transition-transform duration-500">
                             <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
@@ -164,23 +166,23 @@ const reels = [
                 <div class="md:w-7/12 p-8 md:p-12 lg:p-16 flex flex-col justify-center overflow-y-auto">
                     <div class="inline-flex items-center space-x-3 mb-6">
                         <span class="w-6 h-[1px] bg-accent"></span>
-                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500">{reel.category}</span>
+                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400">{reel.category}</span>
                     </div>
                     
-                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-slate-950 leading-[1.1] mb-6">
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-white leading-[1.1] mb-6">
                         {reel.title}
                     </h3>
                     
-                    <p class="text-slate-600 font-light leading-relaxed mb-10 text-sm md:text-base">
+                    <p class="text-slate-400 font-light leading-relaxed mb-10 text-sm md:text-base">
                         {reel.description}
                     </p>
                     
-                    <a href={reel.link} target="_blank" rel="noopener noreferrer" class="group relative flex justify-center items-center bg-slate-950 text-white px-8 py-5 overflow-hidden rounded-full transition-all duration-300 hover:shadow-xl w-full sm:w-auto self-start">
+                    <a href={reel.link} target="_blank" rel="noopener noreferrer" class="group relative flex justify-center items-center bg-white text-slate-950 px-8 py-5 overflow-hidden rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] w-full sm:w-auto self-start">
                         <span class="relative z-10 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] flex items-center gap-3">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                             Ver en Instagram
                         </span>
-                        <div class="absolute inset-0 bg-accent transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
+                        <div class="absolute inset-0 bg-slate-200 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></div>
                     </a>
                 </div>
             </div>

@@ -8,20 +8,43 @@ import '../styles/global.css';
 
 interface Props {
     title: string;
-    hideNav?: boolean; // Propiedad opcional para ocultar la navegación
+    description?: string; // Agregamos la descripción como prop opcional para SEO
+    hideNav?: boolean; 
 }
 
-const { title, hideNav = false } = Astro.props;
+const { 
+    title, 
+    // Descripción por defecto ultra optimizada para Google
+    description = "Estudio jurídico especializado en accidentes de tránsito. Reclamamos los daños de tu vehículo y lesiones físicas. Sin adelantos de honorarios. Consulta sin cargo.",
+    hideNav = false 
+} = Astro.props;
+
+// Generamos la URL canónica para evitar penalizaciones de contenido duplicado en Google
+const canonicalURL = new URL(Astro.url.pathname, 'https://www.myp-abogados.com.ar');
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content="MP Abogados - Asesoría Legal de Alta Gama." />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        
+        <!-- SEO y Meta Tags -->
         <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+        
+        <!-- Open Graph / Redes Sociales y WhatsApp -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content="https://www.myp-abogados.com.ar/og-image.jpg" />
+        
+        <meta name="generator" content={Astro.generator} />
+        
+        <!-- Transiciones fluidas entre páginas -->
         <ViewTransitions />
     </head>
     <body class="bg-slate-950 text-slate-100 antialiased selection:bg-slate-800 selection:text-white pt-0">
